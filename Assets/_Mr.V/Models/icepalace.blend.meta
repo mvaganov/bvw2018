@@ -1,0 +1,193 @@
+fileFormatVersion: 2
+guid: d30187fc173bf4b0cb6e8dfe8b98450e
+timeCreated: 1516333978
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cube_001
+    100002: Empty
+    100004: //RootNode
+    100006: large_hall_cutout
+    100008: person
+    100010: person_001
+    100012: person_002
+    100014: palace
+    100016: mirrors
+    100018: origin
+    100020: palace_MeshPart0
+    100022: palace_MeshPart1
+    100024: person_at_gate
+    100026: person_at_top
+    100028: statues
+    100030: hollow
+    100032: island
+    100034: palace_redux
+    100036: tent_remove
+    100038: X_palace_original
+    100040: gate
+    400000: Cube_001
+    400002: Empty
+    400004: //RootNode
+    400006: large_hall_cutout
+    400008: person
+    400010: person_001
+    400012: person_002
+    400014: palace
+    400016: mirrors
+    400018: origin
+    400020: palace_MeshPart0
+    400022: palace_MeshPart1
+    400024: person_at_gate
+    400026: person_at_top
+    400028: statues
+    400030: hollow
+    400032: island
+    400034: palace_redux
+    400036: tent_remove
+    400038: X_palace_original
+    400040: gate
+    2300000: Cube_001
+    2300002: large_hall_cutout
+    2300004: person
+    2300006: person_001
+    2300008: person_002
+    2300010: palace
+    2300012: mirrors
+    2300014: palace_MeshPart0
+    2300016: palace_MeshPart1
+    2300018: person_at_gate
+    2300020: person_at_top
+    2300022: statues
+    2300024: hollow
+    2300026: island
+    2300028: palace_redux
+    2300030: tent_remove
+    2300032: X_palace_original
+    2300034: gate
+    3300000: Cube_001
+    3300002: large_hall_cutout
+    3300004: person
+    3300006: person_001
+    3300008: person_002
+    3300010: palace
+    3300012: mirrors
+    3300014: palace_MeshPart0
+    3300016: palace_MeshPart1
+    3300018: person_at_gate
+    3300020: person_at_top
+    3300022: statues
+    3300024: hollow
+    3300026: island
+    3300028: palace_redux
+    3300030: tent_remove
+    3300032: X_palace_original
+    3300034: gate
+    4300000: person_002
+    4300002: person_001
+    4300004: person
+    4300006: large_hall_cutout
+    4300008: Cube_001
+    4300010: palace
+    4300012: person_at_top
+    4300014: person_at_gate
+    4300016: mirrors
+    4300018: statues
+    4300020: palace_MeshPart0
+    4300022: palace_MeshPart1
+    4300024: hollow
+    4300026: tent_remove
+    4300028: island
+    4300030: palace_redux
+    4300032: X_palace_original
+    4300034: gate
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_001
+    second: {fileID: 2100000, guid: 6b508c8dc2c1345f7bee1338686fb893, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: unnamed
+    second: {fileID: 2100000, guid: 7f86e14465e504553811b72dabccf1f2, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

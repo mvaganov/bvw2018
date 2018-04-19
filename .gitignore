@@ -1,0 +1,65 @@
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.cachefile
+UpgradeLog*
+
+# Unity generated
+UnityGenerated/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+sysinfo.txt
+*.stackdump
+
+# Visual Studio / MonoDevelop generated
+[Ee]xported[Oo]bj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+# Windows image file caches
+Thumbs.db
+Thumbs.db.meta
+ehthumbs.db
+ehthumbs.db.meta
+[Tt]humbs.db
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+.Spotlight-V100
+.Trashes
+
+# project specific
+[Ww]eb/
+*/Assets/TESTING/
+*/Assets/TESTING.meta
