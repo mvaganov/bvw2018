@@ -33,6 +33,7 @@ public class HandController : MonoBehaviour {
 	float targetDistance = 0;
 
 	public float transitionTime = 0.125f;
+	public bool heldCollidersAreTriggers = true;
 
 	public enum ControlState { controlHead, transition, controlArm, flyingHand, rotateHand }
 	private ControlState state = ControlState.controlHead;
@@ -200,7 +201,6 @@ public class HandController : MonoBehaviour {
 		handRotationRelativeToCamera = new Quaternion[moveControllers.Length];
 		originalPositions = new TransformData[moveControllers.Length];
 		for (int i = 0; i < moveControllers.Length; ++i) {
-			Debug.Log (moveControllers);
 			PopulateController (moveControllers [i].gameObject);
 			originalPositions[i] = new TransformData(moveControllers [i].transform, true);
 		}
@@ -242,7 +242,7 @@ public class HandController : MonoBehaviour {
 
 	void EnableNormalPlayerControls(bool enable) {
 		if (body != null) {
-			Debug.Log ("ACTIVE?" +enable);
+//			Debug.Log ("ACTIVE?" +enable);
 			body.disabledControls = !enable;
 		}
 	}
@@ -252,9 +252,7 @@ public class HandController : MonoBehaviour {
 	GameObject line_test; // TODO remove
 
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update () { }
 
 	public void LetGoOfEverything() {
 		for (int i = 0; i < moveControllers.Length; ++i) {
@@ -369,23 +367,7 @@ public class HandController : MonoBehaviour {
 				float wheel = Input.GetAxis ("Mouse ScrollWheel");
 				float dep = Input.GetKey (KeyCode.Q) ? 1 : Input.GetKey (KeyCode.E) ? -1 : 0;
 				dep *= 0.5f;
-//				mainCamControls.enabled = false;
 				EnableNormalPlayerControls(false);
-				if (Cursor.lockState != CursorLockMode.Locked && Cursor.visible) {
-					Vector3 mPos = Input.mousePosition - new Vector3 (Screen.width / 2, Screen.height / 2, 0);
-					mPos.Normalize ();
-					float angle = Mathf.Acos (mPos.x) * 180 / Mathf.PI * ((mPos.y < 0) ? -1 : 1);
-					if (prevAngleOfMouse == float.PositiveInfinity) {
-						prevAngleOfMouse = angle;
-					}
-					float angleDelta = angle - prevAngleOfMouse;
-					t.position = GetCameraPivotPoint ();
-					prevAngleOfMouse = angle;
-					hand.Rotate (Quaternion.Inverse (hand.rotation) * t.forward, angleDelta);
-				}
-//				else {
-//					hand.Rotate (Quaternion.Inverse (hand.rotation) * t.forward, Input.GetAxis("Mouse X"));
-//				}
 				hand.Rotate (Quaternion.Inverse(hand.rotation) * t.forward, dep * mainCamControls.settings.mouseSensitivity);
 				hand.Rotate (Quaternion.Inverse(hand.rotation) * t.right,   v * mainCamControls.settings.mouseSensitivity);
 				hand.Rotate (Quaternion.Inverse(hand.rotation) * t.up,      h * mainCamControls.settings.mouseSensitivity);
@@ -406,6 +388,29 @@ public class HandController : MonoBehaviour {
 		}
 		return null;
 	}
+
+	List<Collider> heldCollidersThatWereChanged = new List<Collider>();
+	void ColliderTriggerSwitch(GameObject obj, bool isHeldNow) {
+		Collider[] colliders = obj.GetComponents<Collider> ();
+		for (int i = 0; i < colliders.Length; ++i) {
+			if (isHeldNow) {
+				if (colliders [i].isTrigger == false) {
+					colliders [i].isTrigger = true;
+					heldCollidersThatWereChanged.Add (colliders [i]);
+				}
+			} else {
+				int indexAt = heldCollidersThatWereChanged.IndexOf (colliders [i]);
+				if (indexAt >= 0) {
+					colliders [i].isTrigger = false;
+					heldCollidersThatWereChanged.RemoveAt (indexAt);
+				}
+			}
+		}
+		for (int i = 0; i < obj.transform.childCount; ++i) {
+			ColliderTriggerSwitch (obj.transform.GetChild (i).gameObject, isHeldNow);
+		}
+	}
+
 	void UpdateGrabUse() {
 		GameObject hand = CurrentMoveController.gameObject;
 		bool wasGrab = grabButtonHeld[currentMoveControllerIndex], wasTrigger = useButtonHeld[currentMoveControllerIndex];
@@ -432,6 +437,14 @@ public class HandController : MonoBehaviour {
 					touched[currentMoveControllerIndex] = grabbed;
 					hand.GetComponent<VRTK.VRTK_InteractTouch> ().ForceTouch (grabbed);
 					grabber.AttemptGrab ();
+					if (heldCollidersAreTriggers) {
+						ColliderTriggerSwitch (touched [currentMoveControllerIndex], true);
+//						string s = "";
+//						for (int i = 0; i < heldCollidersThatWereChanged.Count; ++i) {
+//							s += heldCollidersThatWereChanged [i].name + " ";
+//						}
+//						Debug.Log ("grabbed"+heldCollidersThatWereChanged.Count+" "+s);
+					}
 				}
 			}
 		} else {
@@ -443,6 +456,10 @@ public class HandController : MonoBehaviour {
 				if (touchedJustNow != touched[currentMoveControllerIndex]) {
 					toucher.ForceStopTouching();
 					if (touched[currentMoveControllerIndex] != null) {
+						if (heldCollidersAreTriggers) {
+							ColliderTriggerSwitch (touched [currentMoveControllerIndex], false);
+//							Debug.Log ("released"+heldCollidersThatWereChanged.Count);
+						}
 						VRTK.VRTK_InteractableObject iobj = touched[currentMoveControllerIndex].GetComponent<VRTK.VRTK_InteractableObject> ();
 						iobj.StopTouching (toucher);
 					}

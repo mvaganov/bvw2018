@@ -5793,11 +5793,12 @@ MonoBehaviour:
   useButton: 323
   howToGrab: 1
   howToUse: 0
-  transitionTime: 1
+  transitionTime: 0.25
+  heldCollidersAreTriggers: 1
   headControlKeys: 27
   armControlKeys: 308
-  handFlyKeys: 306
-  handRotateKeys: 304
+  handFlyKeys: 9
+  handRotateKeys: 306
   switchControllerKeys: 9
   toggleInstructionsKeys: 282
 --- !u!4 &1399389573

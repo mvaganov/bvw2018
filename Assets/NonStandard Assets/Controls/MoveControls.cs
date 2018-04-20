@@ -218,7 +218,9 @@ namespace NS {
 					idealRotation = Quaternion.LookRotation (foreDir, groundNormal);
 				} else {
 					// if body alignment follows opposes gravity
-					idealRotation = Quaternion.LookRotation (foreHorizon, -gravityDirection);
+					if (foreHorizon != Vector3.zero) {
+						idealRotation = Quaternion.LookRotation (foreHorizon, -gravityDirection);
+					}
 				}
 				if (horizontalRotationOffset != 0) {
 					idealRotation = idealRotation * Quaternion.AngleAxis (horizontalRotationOffset, transform.up);
