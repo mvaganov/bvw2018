@@ -6,6 +6,9 @@ using UnityEngine;
 namespace NS {
 	[RequireComponent(typeof(Rigidbody))]
 	public class MoveControls : MonoBehaviour {
+		public static int playerControlledLayer = -1;
+		public static string playerControlledLayerName = "player controlled";
+
 		[HideInInspector]
 		public Vector3 gravityDirection = Vector3.down; // setter forces normalization
 		public float gravityPower = 10;
@@ -144,6 +147,7 @@ namespace NS {
 		Rigidbody rb;
 		// Use this for initialization
 		void Start () {
+			playerControlledLayer = LayerMask.NameToLayer(playerControlledLayerName);
 			rb = GetComponent<Rigidbody> ();
 			rb.useGravity = false;
 			capsule = GetComponent<CapsuleCollider> ();
@@ -153,6 +157,7 @@ namespace NS {
 				capsule.radius = 0.25f;
 				capsule.height = 1.25f;
 				capsule.direction = 1; // Y-axis
+				gameObject.layer = playerControlledLayer;
 			}
 			groundNormal = -gravityDirection;
 

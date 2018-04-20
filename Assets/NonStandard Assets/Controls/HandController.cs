@@ -291,6 +291,7 @@ public class HandController : MonoBehaviour {
 		if (armControlRequest) { TransitionToHand (ControlState.controlArm, true); return; }
 		if (headControlRequest) { TransitionToHead (); return; }
 		if (handRotateRequest) { TransitionToHand (ControlState.rotateHand, false); return; }
+		if (handFlyRequest) { TransitionToHand (ControlState.flyingHand, false); return; }
 	}
 
 	void NextMoveController() {
@@ -389,25 +390,21 @@ public class HandController : MonoBehaviour {
 		return null;
 	}
 
-	List<Collider> heldCollidersThatWereChanged = new List<Collider>();
-	void ColliderTriggerSwitch(GameObject obj, bool isHeldNow) {
-		Collider[] colliders = obj.GetComponents<Collider> ();
-		for (int i = 0; i < colliders.Length; ++i) {
-			if (isHeldNow) {
-				if (colliders [i].isTrigger == false) {
-					colliders [i].isTrigger = true;
-					heldCollidersThatWereChanged.Add (colliders [i]);
-				}
-			} else {
-				int indexAt = heldCollidersThatWereChanged.IndexOf (colliders [i]);
-				if (indexAt >= 0) {
-					colliders [i].isTrigger = false;
-					heldCollidersThatWereChanged.RemoveAt (indexAt);
-				}
+	Dictionary<GameObject, int> oldLayer = new Dictionary<GameObject, int>();
+	void CollisionSwitch(GameObject obj, bool isHeldNow) {
+		if (isHeldNow) {
+			if (obj.layer != MoveControls.playerControlledLayer) {
+				oldLayer [obj] = obj.layer;
+				obj.layer = MoveControls.playerControlledLayer;
+			}
+		} else {
+			if (oldLayer.ContainsKey (obj)) {
+				obj.layer = oldLayer [obj];
+				oldLayer.Remove (obj);
 			}
 		}
 		for (int i = 0; i < obj.transform.childCount; ++i) {
-			ColliderTriggerSwitch (obj.transform.GetChild (i).gameObject, isHeldNow);
+			CollisionSwitch (obj.transform.GetChild (i).gameObject, isHeldNow);
 		}
 	}
 
@@ -438,7 +435,7 @@ public class HandController : MonoBehaviour {
 					hand.GetComponent<VRTK.VRTK_InteractTouch> ().ForceTouch (grabbed);
 					grabber.AttemptGrab ();
 					if (heldCollidersAreTriggers) {
-						ColliderTriggerSwitch (touched [currentMoveControllerIndex], true);
+						CollisionSwitch (touched [currentMoveControllerIndex], true);
 //						string s = "";
 //						for (int i = 0; i < heldCollidersThatWereChanged.Count; ++i) {
 //							s += heldCollidersThatWereChanged [i].name + " ";
@@ -457,7 +454,7 @@ public class HandController : MonoBehaviour {
 					toucher.ForceStopTouching();
 					if (touched[currentMoveControllerIndex] != null) {
 						if (heldCollidersAreTriggers) {
-							ColliderTriggerSwitch (touched [currentMoveControllerIndex], false);
+							CollisionSwitch (touched [currentMoveControllerIndex], false);
 //							Debug.Log ("released"+heldCollidersThatWereChanged.Count);
 						}
 						VRTK.VRTK_InteractableObject iobj = touched[currentMoveControllerIndex].GetComponent<VRTK.VRTK_InteractableObject> ();
