@@ -25,7 +25,7 @@ namespace NS {
 
 		public void DoActivateTrigger (){ DoActivateTrigger (gameObject, whatToTrigger, gameObject, activate, delayInSeconds); }
 	}
-	[RequireComponent(typeof(Collider))]
+	//[RequireComponent(typeof(Collider))]
 	public class TriggerBase : MonoBehaviour {
 
 		public enum TKind {
