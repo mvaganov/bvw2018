@@ -26,6 +26,8 @@ ModelImporter:
     100036: tent_remove
     100038: X_palace_original
     100040: gate
+    100042: elevator_platform
+    100044: island_001
     400000: Cube_001
     400002: Empty
     400004: //RootNode
@@ -47,6 +49,8 @@ ModelImporter:
     400036: tent_remove
     400038: X_palace_original
     400040: gate
+    400042: elevator_platform
+    400044: island_001
     2300000: Cube_001
     2300002: large_hall_cutout
     2300004: person
@@ -65,6 +69,8 @@ ModelImporter:
     2300030: tent_remove
     2300032: X_palace_original
     2300034: gate
+    2300036: elevator_platform
+    2300038: island_001
     3300000: Cube_001
     3300002: large_hall_cutout
     3300004: person
@@ -83,6 +89,8 @@ ModelImporter:
     3300030: tent_remove
     3300032: X_palace_original
     3300034: gate
+    3300036: elevator_platform
+    3300038: island_001
     4300000: person_002
     4300002: person_001
     4300004: person
@@ -101,14 +109,41 @@ ModelImporter:
     4300030: palace_redux
     4300032: X_palace_original
     4300034: gate
+    4300036: elevator_platform
+    4300038: island_001
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 109f4be8925694a73a7580f8aa999bdf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material_001
     second: {fileID: 2100000, guid: 6b508c8dc2c1345f7bee1338686fb893, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: flooring
+    second: {fileID: 2100000, guid: 524946e902bf99f49a86537b53b8ea3a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: 9c4c3931d88124fb7842ec19caed1efa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass_001
+    second: {fileID: 2100000, guid: 71868f4e395c41147a45c289fe0ddfc5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stair
+    second: {fileID: 2100000, guid: 5ab7fb49f58094b4e927725fc7f6a060, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -156,6 +191,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
