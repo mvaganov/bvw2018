@@ -28,6 +28,7 @@ ModelImporter:
     100040: gate
     100042: elevator_platform
     100044: island_001
+    100046: island_002
     400000: Cube_001
     400002: Empty
     400004: //RootNode
@@ -51,6 +52,7 @@ ModelImporter:
     400040: gate
     400042: elevator_platform
     400044: island_001
+    400046: island_002
     2300000: Cube_001
     2300002: large_hall_cutout
     2300004: person
@@ -71,6 +73,7 @@ ModelImporter:
     2300034: gate
     2300036: elevator_platform
     2300038: island_001
+    2300040: island_002
     3300000: Cube_001
     3300002: large_hall_cutout
     3300004: person
@@ -91,6 +94,7 @@ ModelImporter:
     3300034: gate
     3300036: elevator_platform
     3300038: island_001
+    3300040: island_002
     4300000: person_002
     4300002: person_001
     4300004: person
@@ -111,6 +115,7 @@ ModelImporter:
     4300034: gate
     4300036: elevator_platform
     4300038: island_001
+    4300040: island_002
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -139,6 +144,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: glass_001
     second: {fileID: 2100000, guid: 71868f4e395c41147a45c289fe0ddfc5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass_002
+    second: {fileID: 2100000, guid: 001be20ee22ef4154b4cf73b0b16e0f7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
