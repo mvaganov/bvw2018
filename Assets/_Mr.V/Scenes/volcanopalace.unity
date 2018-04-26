@@ -2271,9 +2271,9 @@ MonoBehaviour:
   interruptControlWhenHit: 1
   useGravity: 1
   standing: 0
-  speed: 3
-  acceleration: 10
-  maxAcceleration: 10
+  speed: 10
+  acceleration: 20
+  maxAcceleration: 20
   jump:
     minJumpHeight: 0.125
     maxJumpHeight: 1
@@ -3560,6 +3560,14 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 952ec8da7f406f14bbe24f1aeea1b9d6, type: 2}
     - target: {fileID: 2300026, guid: d30187fc173bf4b0cb6e8dfe8b98450e, type: 3}
       propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 519ce39012015c04a9b30f67ab42c6db, type: 2}
+    - target: {fileID: 2300026, guid: d30187fc173bf4b0cb6e8dfe8b98450e, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c4c3931d88124fb7842ec19caed1efa, type: 2}
+    - target: {fileID: 2300026, guid: d30187fc173bf4b0cb6e8dfe8b98450e, type: 3}
+      propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 519ce39012015c04a9b30f67ab42c6db, type: 2}
     m_RemovedComponents: []
@@ -9968,6 +9976,7 @@ MonoBehaviour:
   enableTeleport: 1
   targetListPolicy: {fileID: 0}
   enableBodyCollisions: 1
+  preventKinematicRigidbody: 1
   ignoreGrabbedCollisions: 1
   ignoreCollisionsWith: []
   headsetYOffset: 0.2
