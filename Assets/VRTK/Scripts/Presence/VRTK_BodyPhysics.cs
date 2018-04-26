@@ -63,6 +63,8 @@ namespace VRTK
 
         [Tooltip("If checked then the body collider and rigidbody will be used to check for rigidbody collisions.")]
         public bool enableBodyCollisions = true;
+		[Tooltip("If checked then the rigidbody not be set to kinematic, meaing other scripts must use the rigidbody physics system.")]
+		public bool preventKinematicRigidbody = true;
         [Tooltip("If this is checked then any items that are grabbed with the controller will not collide with the body collider. This is very useful if the user is required to grab and wield objects because if the collider was active they would bounce off the collider.")]
         public bool ignoreGrabbedCollisions = true;
         [Tooltip("An array of GameObjects that will not collide with the body collider.")]
@@ -530,6 +532,8 @@ namespace VRTK
         protected virtual void SetupHeadset()
         {
             headset = VRTK_DeviceFinder.HeadsetTransform();
+			NS.CameraControls cc = headset.GetComponent<NS.CameraControls> ();
+			if (cc != null) { headset = cc.settings.targetToCenterOn; }
             if (headset != null)
             {
                 currentStandingPosition = new Vector2(headset.position.x, headset.position.z);
@@ -674,7 +678,7 @@ namespace VRTK
         {
             if (bodyRigidbody != null)
             {
-                bodyRigidbody.isKinematic = !state;
+				bodyRigidbody.isKinematic = !preventKinematicRigidbody && !state;
             }
             if (bodyCollider != null)
             {
@@ -845,6 +849,7 @@ namespace VRTK
             UpdateStandingPosition(currentHeadsetPosition);
             if (enableBodyCollisions)
             {
+				
                 TogglePhysics(!isMoving);
             }
 

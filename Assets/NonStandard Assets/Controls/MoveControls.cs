@@ -198,7 +198,7 @@ namespace NS {
 			foreHorizon = Vector3.Cross(sideDir, -gravityDirection).normalized;
 		}
 		#if SHOW_LINES
-		GameObject line_f, line_s, line_leg, line_horizon, line_velocity, line_against, line_accel, line_shadow;
+		GameObject line_f, line_s, line_leg, line_horizon, line_velocity, line_against, line_accel, line_shadow, line_ray;
 		#endif
 
 		public float horizontalRotationOffset;
@@ -353,10 +353,12 @@ namespace NS {
 					}
 					#if SHOW_LINES
 				NS.Lines.Make (ref line_leg, transform.position+hip, 
-					                      transform.position+hip + gravityDirection * maxStandHeight, Color.yellow);
+					                      transform.position+hip + gravityDirection * -maxStandHeight, Color.magenta);
 					#endif
 					if (Physics.Raycast (transform.position + hip, gravityDirection, out rh, maxStandHeight)
 					&& rh.collider.gameObject != gameObject) {
+						LineRenderer lr = line_leg.GetComponent<LineRenderer> ();
+						lr.startColor = Random.ColorHSV ();
 						onGround = true;
 						groundNormal = rh.normal;
 						if (rh.distance <= hoverDistance + epsilon) {
