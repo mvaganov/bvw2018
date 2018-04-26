@@ -35,6 +35,10 @@ ehthumbs.db.meta
 [Tt]humbs.db
 [Dd]esktop.ini
 
+# blender backups
+*.blend1
+*.blend1.meta
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
