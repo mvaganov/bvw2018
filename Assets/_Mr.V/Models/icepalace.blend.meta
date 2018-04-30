@@ -33,6 +33,12 @@ ModelImporter:
     100050: courtyard_glass
     100052: palace_top_spiral
     100054: palace_tower
+    100056: man_in_the_arena
+    100058: palace_tower_001
+    100060: palace_tower_stair_origin
+    100062: palace_tower_stairs
+    100064: palace_tower_stairs_curve
+    100066: palace_tower_stairs_source
     400000: Cube_001
     400002: Empty
     400004: //RootNode
@@ -61,6 +67,12 @@ ModelImporter:
     400050: courtyard_glass
     400052: palace_top_spiral
     400054: palace_tower
+    400056: man_in_the_arena
+    400058: palace_tower_001
+    400060: palace_tower_stair_origin
+    400062: palace_tower_stairs
+    400064: palace_tower_stairs_curve
+    400066: palace_tower_stairs_source
     2300000: Cube_001
     2300002: large_hall_cutout
     2300004: person
@@ -86,6 +98,11 @@ ModelImporter:
     2300044: courtyard_glass
     2300046: palace_top_spiral
     2300048: palace_tower
+    2300050: man_in_the_arena
+    2300052: palace_tower_001
+    2300054: palace_tower_stairs
+    2300056: palace_tower_stairs_curve
+    2300058: palace_tower_stairs_source
     3300000: Cube_001
     3300002: large_hall_cutout
     3300004: person
@@ -111,6 +128,11 @@ ModelImporter:
     3300044: courtyard_glass
     3300046: palace_top_spiral
     3300048: palace_tower
+    3300050: man_in_the_arena
+    3300052: palace_tower_001
+    3300054: palace_tower_stairs
+    3300056: palace_tower_stairs_curve
+    3300058: palace_tower_stairs_source
     4300000: person_002
     4300002: person_001
     4300004: person
@@ -136,6 +158,11 @@ ModelImporter:
     4300044: arena_ground_glass
     4300046: courtyard_glass
     4300048: palace_tower
+    4300050: man_in_the_arena
+    4300052: palace_tower_001
+    4300054: palace_tower_stairs
+    4300056: palace_tower_stairs_curve
+    4300058: palace_tower_stairs_source
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
