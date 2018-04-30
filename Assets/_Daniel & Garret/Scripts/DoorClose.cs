@@ -30,7 +30,7 @@ public class DoorClose : MonoBehaviour {
 			moved += speed;
 			Debug.Log (moved);
 		}
-		if (moved >= 4.7) {
+		if (moved >= 4.78) {
 			boom.SetActive (true);
 			doors.GetComponent<AudioSource> ().mute = true;
 		}
