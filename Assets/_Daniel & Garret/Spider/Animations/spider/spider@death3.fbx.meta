@@ -1,0 +1,220 @@
+fileFormatVersion: 2
+guid: 65f911677ea51ac42b7a7f49bfbbdc22
+labels:
+- Robot
+- Spider
+- Mech
+- Bot
+- Machine
+- Vechicle
+- Droid
+- Lowpoly
+- Hardsurface
+- Game
+- Mobile
+- Drone
+- War
+- Scifi
+- Dsf
+- Future
+- Futuristic
+- Modern
+timeCreated: 18446744011573954816
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: arm_back_L
+    100002: arm_back_R
+    100004: arm_L
+    100006: arm_R
+    100008: Armature_SB
+    100010: claw_back_L
+    100012: claw_back_R
+    100014: claw_L
+    100016: claw_R
+    100018: hips
+    100020: root
+    100022: shoulder_back_L
+    100024: shoulder_back_R
+    100026: shoulder_L
+    100028: shoulder_R
+    100030: small_claw2_L
+    100032: small_claw2_R
+    100034: small_claw_L
+    100036: small_claw_R
+    100038: //RootNode
+    100040: torso
+    400000: arm_back_L
+    400002: arm_back_R
+    400004: arm_L
+    400006: arm_R
+    400008: Armature_SB
+    400010: claw_back_L
+    400012: claw_back_R
+    400014: claw_L
+    400016: claw_R
+    400018: hips
+    400020: root
+    400022: shoulder_back_L
+    400024: shoulder_back_R
+    400026: shoulder_L
+    400028: shoulder_R
+    400030: small_claw2_L
+    400032: small_claw2_R
+    400034: small_claw_L
+    400036: small_claw_R
+    400038: //RootNode
+    400040: torso
+    7400000: death3
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: death3
+      takeName: Action
+      firstFrame: -1
+      lastFrame: 49
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature_SB
+        weight: 1
+      - path: Armature_SB/root
+        weight: 1
+      - path: Armature_SB/root/hips
+        weight: 1
+      - path: Armature_SB/root/hips/shoulder_back_L
+        weight: 1
+      - path: Armature_SB/root/hips/shoulder_back_L/arm_back_L
+        weight: 1
+      - path: Armature_SB/root/hips/shoulder_back_L/arm_back_L/claw_back_L
+        weight: 1
+      - path: Armature_SB/root/hips/shoulder_back_R
+        weight: 1
+      - path: Armature_SB/root/hips/shoulder_back_R/arm_back_R
+        weight: 1
+      - path: Armature_SB/root/hips/shoulder_back_R/arm_back_R/claw_back_R
+        weight: 1
+      - path: Armature_SB/root/hips/shoulder_L
+        weight: 1
+      - path: Armature_SB/root/hips/shoulder_L/arm_L
+        weight: 1
+      - path: Armature_SB/root/hips/shoulder_L/arm_L/claw_L
+        weight: 1
+      - path: Armature_SB/root/hips/shoulder_R
+        weight: 1
+      - path: Armature_SB/root/hips/shoulder_R/arm_R
+        weight: 1
+      - path: Armature_SB/root/hips/shoulder_R/arm_R/claw_R
+        weight: 1
+      - path: Armature_SB/root/hips/small_claw_L
+        weight: 1
+      - path: Armature_SB/root/hips/small_claw_L/small_claw2_L
+        weight: 1
+      - path: Armature_SB/root/hips/small_claw_R
+        weight: 1
+      - path: Armature_SB/root/hips/small_claw_R/small_claw2_R
+        weight: 1
+      - path: Armature_SB/root/hips/torso
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: root
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 6c5e045088805f246b8e3cfa21c54800,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
