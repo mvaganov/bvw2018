@@ -38,6 +38,10 @@ namespace VRTK
         [Tooltip("Lock the mouse cursor to the game window when the mouse movement key is pressed.")]
         public bool lockMouseToView = true;
 
+		[Header("Disable for other controllers")]
+		public bool disableLocomotion = false;
+		public bool disableRotation = false;
+
         [Header("Adjustments")]
 
         [Tooltip("Adjust hand movement speed.")]
@@ -247,7 +251,9 @@ namespace VRTK
             }
             else
             {
-                UpdateRotation();
+				if (!disableRotation) {
+					UpdateRotation ();
+				}
                 if(Input.GetKeyDown(distancePickupRight) && Input.GetKey(distancePickupModifier))
                 {
                     TryPickup(true);
@@ -273,9 +279,9 @@ namespace VRTK
                     crossHairPanel.SetActive(false);
                 }
             }
-
-            UpdatePosition();
-
+			if (!disableLocomotion) {
+				UpdatePosition ();
+			}
             if (showControlHints)
             {
                 UpdateHints();
