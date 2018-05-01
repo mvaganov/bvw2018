@@ -15,10 +15,10 @@ public class LiftBars : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timePassed += Time.deltaTime;
-		if (timePassed >= wait && moved <= 10) {
+		if (timePassed >= wait && moved <= 12) {
 			for (int i = 0; i < bars.Length; i++) {
-				bars [i].transform.Translate (0f, 0.1f, 0f);
-				moved += 0.025;
+				bars [i].transform.Translate (0f, -0.08f, 0f);
+				moved += 0.02;
 			}
 		}
 	}
