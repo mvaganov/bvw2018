@@ -21,14 +21,14 @@ public class DoorClose : MonoBehaviour {
 	void Update () {
 		if (moved < 5) {
 			leftCurrent = leftDoor.transform.position.x;
-			Debug.Log (leftCurrent + speed);
+			//Debug.Log (leftCurrent + speed);
 			leftDoor.transform.position = new Vector3 (leftCurrent + speed, leftDoor.transform.position.y, leftDoor.transform.position.z);
 	
 			rightCurrent = rightDoor.transform.position.x;
 			rightDoor.transform.position = new Vector3 (rightCurrent - speed, rightDoor.transform.position.y, rightDoor.transform.position.z);
 
 			moved += speed;
-			Debug.Log (moved);
+//			Debug.Log (moved);
 		}
 		if (moved >= 4.78) {
 			boom.SetActive (true);
