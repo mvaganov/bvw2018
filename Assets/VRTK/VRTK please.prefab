@@ -1677,7 +1677,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4765474069605128}
-  - component: {fileID: 114747477456407266}
+  - component: {fileID: 114848412243779932}
   - component: {fileID: 54284619788103580}
   - component: {fileID: 114998879551383048}
   - component: {fileID: 114173009883579620}
@@ -9298,33 +9298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44596d094d0946345a7fc6688ba9c06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114747477456407266
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1656501041120754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d0ccd621417664ca1f1123b9488a27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showControlHints: 1
-  mouseMovementInput: 0
-  mouseMovementKey: 325
-  toggleControlHints: 282
-  changeHands: 9
-  handsOnOff: 308
-  rotationPosition: 304
-  changeAxis: 306
-  triggerAlias: 323
-  gripAlias: 324
-  touchpadAlias: 116
-  buttonOneAlias: 122
-  buttonTwoAlias: 120
-  startMenuAlias: 102
-  touchModifier: 121
-  hairTouchModifier: 104
 --- !u!114 &114747933977310158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9494,6 +9467,33 @@ MonoBehaviour:
   smoothsScale: 0
   maxAllowedPerFrameSizeDifference: 0.003
   _moment: 2
+--- !u!114 &114848412243779932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1656501041120754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a308d604d6d9e434e8f8aabb85b8b9e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showControlHints: 1
+  mouseMovementInput: 0
+  mouseMovementKey: 324
+  toggleControlHints: 282
+  changeHands: 9
+  handsOnOff: 308
+  rotationPosition: 304
+  changeAxis: 306
+  triggerAlias: 323
+  gripAlias: 324
+  touchpadAlias: 116
+  buttonOneAlias: 122
+  buttonTwoAlias: 120
+  startMenuAlias: 102
+  touchModifier: 121
+  hairTouchModifier: 104
 --- !u!114 &114859791463976818
 MonoBehaviour:
   m_ObjectHideFlags: 1
