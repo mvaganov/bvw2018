@@ -42,8 +42,8 @@ public class HandController : MonoBehaviour {
 
 	public KeyCode headControlKeys = KeyCode.Escape;
 	public KeyCode armControlKeys = KeyCode.LeftAlt;
-	public KeyCode handFlyKeys = KeyCode.LeftControl;
-	public KeyCode handRotateKeys = KeyCode.LeftShift;
+	public KeyCode handFlyKeys = KeyCode.Return;
+    public KeyCode handRotateKeys = KeyCode.LeftControl;
 	public KeyCode switchControllerKeys = KeyCode.Tab;
 	public KeyCode toggleInstructionsKeys = KeyCode.F1;
 
@@ -421,58 +421,61 @@ public class HandController : MonoBehaviour {
 		}
 		if (wasGrab != grabButtonHeld[currentMoveControllerIndex] || wasTrigger != useButtonHeld[currentMoveControllerIndex]) {
 			VisualizeHandEvents v = hand.GetComponent<VisualizeHandEvents> ();
+            if(v == null) {
+                v = hand.GetComponentInChildren<VisualizeHandEvents>();
+            }
 			if (v != null) {
 				if (wasGrab != grabButtonHeld[currentMoveControllerIndex]) { if (grabButtonHeld[currentMoveControllerIndex]) { v.DoGrip (); } else { v.UndoGrip (); } }
 				if (wasTrigger != useButtonHeld[currentMoveControllerIndex]) { if (useButtonHeld[currentMoveControllerIndex]) { v.DoTrigger (); } else { v.UndoTrigger (); } }
 			}
 		}
-		VRTK.VRTK_InteractGrab grabber = hand.GetComponent<VRTK.VRTK_InteractGrab> ();
-		if (grabButtonHeld[currentMoveControllerIndex]) {
-			if (grabber.GetGrabbedObject () == null) {
-				GameObject grabbed = GetInteractableAt(hand.transform.position, .125f);
-				if (grabbed != null) {
-					touched[currentMoveControllerIndex] = grabbed;
-					hand.GetComponent<VRTK.VRTK_InteractTouch> ().ForceTouch (grabbed);
-					grabber.AttemptGrab ();
-					if (heldCollidersAreTriggers) {
-						CollisionSwitch (touched [currentMoveControllerIndex], true);
-//						string s = "";
-//						for (int i = 0; i < heldCollidersThatWereChanged.Count; ++i) {
-//							s += heldCollidersThatWereChanged [i].name + " ";
-//						}
-//						Debug.Log ("grabbed"+heldCollidersThatWereChanged.Count+" "+s);
-					}
-				}
-			}
-		} else {
-			if (grabber.GetGrabbedObject () != null) {
-				grabber.ForceRelease (true);
-			} else {
-				GameObject touchedJustNow = GetInteractableAt(hand.transform.position, .125f);
-				VRTK.VRTK_InteractTouch toucher = hand.GetComponent<VRTK.VRTK_InteractTouch> ();
-				if (touchedJustNow != touched[currentMoveControllerIndex]) {
-					toucher.ForceStopTouching();
-					if (touched[currentMoveControllerIndex] != null) {
-						if (heldCollidersAreTriggers) {
-							CollisionSwitch (touched [currentMoveControllerIndex], false);
-//							Debug.Log ("released"+heldCollidersThatWereChanged.Count);
-						}
-						VRTK.VRTK_InteractableObject iobj = touched[currentMoveControllerIndex].GetComponent<VRTK.VRTK_InteractableObject> ();
-						iobj.StopTouching (toucher);
-					}
-				}
-				touched[currentMoveControllerIndex] = touchedJustNow;
-				if (touchedJustNow != null) {
-					toucher.ForceTouch (touchedJustNow);
-				}
-			}
-		}
-		VRTK.VRTK_InteractUse user = hand.GetComponent<VRTK.VRTK_InteractUse> ();
-		if (useButtonHeld [currentMoveControllerIndex]) {
-			user.AttemptUse ();
-		} else {
-			user.ForceStopUsing ();
-		}
+// 		VRTK.VRTK_InteractGrab grabber = hand.GetComponent<VRTK.VRTK_InteractGrab> ();
+// 		if (grabButtonHeld[currentMoveControllerIndex]) {
+// 			if (grabber.GetGrabbedObject () == null) {
+// 				GameObject grabbed = GetInteractableAt(hand.transform.position, .125f);
+// 				if (grabbed != null) {
+// 					touched[currentMoveControllerIndex] = grabbed;
+// 					hand.GetComponent<VRTK.VRTK_InteractTouch> ().ForceTouch (grabbed);
+// 					grabber.AttemptGrab ();
+// 					if (heldCollidersAreTriggers) {
+// 						CollisionSwitch (touched [currentMoveControllerIndex], true);
+// //						string s = "";
+// //						for (int i = 0; i < heldCollidersThatWereChanged.Count; ++i) {
+// //							s += heldCollidersThatWereChanged [i].name + " ";
+// //						}
+// //						Debug.Log ("grabbed"+heldCollidersThatWereChanged.Count+" "+s);
+// 					}
+// 				}
+// 			}
+// 		} else {
+// 			if (grabber.GetGrabbedObject () != null) {
+// 				grabber.ForceRelease (true);
+// 			} else {
+// 				GameObject touchedJustNow = GetInteractableAt(hand.transform.position, .125f);
+// 				VRTK.VRTK_InteractTouch toucher = hand.GetComponent<VRTK.VRTK_InteractTouch> ();
+// 				if (touchedJustNow != touched[currentMoveControllerIndex]) {
+// 					toucher.ForceStopTouching();
+// 					if (touched[currentMoveControllerIndex] != null) {
+// 						if (heldCollidersAreTriggers) {
+// 							CollisionSwitch (touched [currentMoveControllerIndex], false);
+// //							Debug.Log ("released"+heldCollidersThatWereChanged.Count);
+// 						}
+// 						VRTK.VRTK_InteractableObject iobj = touched[currentMoveControllerIndex].GetComponent<VRTK.VRTK_InteractableObject> ();
+// 						iobj.StopTouching (toucher);
+// 					}
+// 				}
+// 				touched[currentMoveControllerIndex] = touchedJustNow;
+// 				if (touchedJustNow != null) {
+// 					toucher.ForceTouch (touchedJustNow);
+// 				}
+// 			}
+// 		}
+// 		VRTK.VRTK_InteractUse user = hand.GetComponent<VRTK.VRTK_InteractUse> ();
+// 		if (useButtonHeld [currentMoveControllerIndex]) {
+// 			user.AttemptUse ();
+// 		} else {
+// 			user.ForceStopUsing ();
+// 		}
 	}
 
 	void TransitionToHand(ControlState goalState, bool enableNormalPlayerControls) {

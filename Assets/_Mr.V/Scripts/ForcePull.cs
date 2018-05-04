@@ -80,7 +80,9 @@ public class ForcePull : MonoBehaviour {
 								emitFrom = rh.point;
 							}
 						}
-						telekenisisParticle.Emit (emitFrom, -raydir * 1, 1, 1, telekenisisParticle.main.startColor.color);
+						if(telekenisisParticle != null) {
+							telekenisisParticle.Emit (emitFrom, -raydir * 1, 1, 1, telekenisisParticle.main.startColor.color);
+						}
 					}
 				}
 			}
