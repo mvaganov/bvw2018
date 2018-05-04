@@ -87,19 +87,19 @@ namespace VRTK
 
         [Header("Controller Key Bindings")]
         [Tooltip("Key used to simulate trigger button.")]
-        public KeyCode triggerAlias = KeyCode.Mouse1;
+        public KeyCode triggerAlias = KeyCode.Mouse0;
         [Tooltip("Key used to simulate grip button.")]
-        public KeyCode gripAlias = KeyCode.Mouse0;
+        public KeyCode gripAlias = KeyCode.Mouse1;
         [Tooltip("Key used to simulate touchpad button.")]
-        public KeyCode touchpadAlias = KeyCode.Q;
+        public KeyCode touchpadAlias = KeyCode.T;
         [Tooltip("Key used to simulate button one.")]
-        public KeyCode buttonOneAlias = KeyCode.E;
+        public KeyCode buttonOneAlias = KeyCode.Z;
         [Tooltip("Key used to simulate button two.")]
-        public KeyCode buttonTwoAlias = KeyCode.R;
+        public KeyCode buttonTwoAlias = KeyCode.X;
         [Tooltip("Key used to simulate start menu button.")]
         public KeyCode startMenuAlias = KeyCode.F;
         [Tooltip("Key used to switch between button touch and button press mode.")]
-        public KeyCode touchModifier = KeyCode.T;
+        public KeyCode touchModifier = KeyCode.Y;
         [Tooltip("Key used to switch between hair touch mode.")]
         public KeyCode hairTouchModifier = KeyCode.H;
 
@@ -203,51 +203,51 @@ namespace VRTK
 
             if (mouseMovementInput == MouseInputMode.RequiresButtonPress)
             {
-                if (lockMouseToView)
-                {
-                    Cursor.lockState = Input.GetKey(mouseMovementKey) ? CursorLockMode.Locked : CursorLockMode.None;
-                }
-                else if (Input.GetKeyDown(mouseMovementKey))
-                {
-                    oldPos = Input.mousePosition;
-                }
+               if (lockMouseToView)
+               {
+                   Cursor.lockState = Input.GetKey(mouseMovementKey) ? CursorLockMode.Locked : CursorLockMode.None;
+               }
+               else if (Input.GetKeyDown(mouseMovementKey))
+               {
+                   oldPos = Input.mousePosition;
+               }
             }
 
             if (Input.GetKeyDown(handsOnOff))
             {
-                if (isHand)
-                {
-                    SetMove();
-                }
-                else
-                {
-                    SetHand();
-                }
+               if (isHand)
+               {
+                   SetMove();
+               }
+               else
+               {
+                   SetHand();
+               }
             }
 
             if (Input.GetKeyDown(changeHands))
             {
-                if (currentHand.name == "LeftHand")
-                {
-                    currentHand = rightHand;
-                    rightController.Selected = true;
-                    leftController.Selected = false;
-                }
-                else
-                {
-                    currentHand = leftHand;
-                    rightController.Selected = false;
-                    leftController.Selected = true;
-                }
+               if (currentHand.name == "LeftHand")
+               {
+                   currentHand = rightHand;
+                   rightController.Selected = true;
+                   leftController.Selected = false;
+               }
+               else
+               {
+                   currentHand = leftHand;
+                   rightController.Selected = false;
+                   leftController.Selected = true;
+               }
             }
 
             if (isHand)
             {
-                UpdateHands();
+               UpdateHands();
             }
             else
             {
-                UpdateRotation();
+                UpdateRotation ();
                 if(Input.GetKeyDown(distancePickupRight) && Input.GetKey(distancePickupModifier))
                 {
                     TryPickup(true);
@@ -258,11 +258,11 @@ namespace VRTK
                 }
                 if(Input.GetKey(sprint))
                 {
-                    sprintMultiplier = playerSprintMultiplier;
+                   sprintMultiplier = playerSprintMultiplier;
                 }
                 else
                 {
-                    sprintMultiplier = 1;
+                   sprintMultiplier = 1;
                 }
                 if(Input.GetKeyDown(distancePickupModifier))
                 {
@@ -273,9 +273,7 @@ namespace VRTK
                     crossHairPanel.SetActive(false);
                 }
             }
-
-            UpdatePosition();
-
+            UpdatePosition ();
             if (showControlHints)
             {
                 UpdateHints();
@@ -312,118 +310,118 @@ namespace VRTK
 
         private void UpdateHands()
         {
-            Vector3 mouseDiff = GetMouseDelta();
+           Vector3 mouseDiff = GetMouseDelta();
 
-            if (IsAcceptingMouseInput())
-            {
-                if (Input.GetKey(rotationPosition)) //Rotation
-                {
-                    if (Input.GetKey(changeAxis))
-                    {
-                        Vector3 rot = Vector3.zero;
-                        rot.x += (mouseDiff * handRotationMultiplier).y;
-                        rot.y += (mouseDiff * handRotationMultiplier).x;
-                        currentHand.transform.Rotate(rot * Time.deltaTime);
-                    }
-                    else
-                    {
-                        Vector3 rot = Vector3.zero;
-                        rot.z += (mouseDiff * handRotationMultiplier).x;
-                        rot.x += (mouseDiff * handRotationMultiplier).y;
-                        currentHand.transform.Rotate(rot * Time.deltaTime);
-                    }
-                }
-                else //Position
-                {
-                    if (Input.GetKey(changeAxis))
-                    {
-                        Vector3 pos = Vector3.zero;
-                        pos += mouseDiff * handMoveMultiplier;
-                        currentHand.transform.Translate(pos * Time.deltaTime);
-                    }
-                    else
-                    {
-                        Vector3 pos = Vector3.zero;
-                        pos.x += (mouseDiff * handMoveMultiplier).x;
-                        pos.z += (mouseDiff * handMoveMultiplier).y;
-                        currentHand.transform.Translate(pos * Time.deltaTime);
-                    }
-                }
-            }
+           if (IsAcceptingMouseInput())
+           {
+               if (Input.GetKey(rotationPosition)) //Rotation
+               {
+                   if (Input.GetKey(changeAxis))
+                   {
+                       Vector3 rot = Vector3.zero;
+                       rot.x += (mouseDiff * handRotationMultiplier).y;
+                       rot.y += (mouseDiff * handRotationMultiplier).x;
+                       currentHand.transform.Rotate(rot * Time.deltaTime);
+                   }
+                   else
+                   {
+                       Vector3 rot = Vector3.zero;
+                       rot.z += (mouseDiff * handRotationMultiplier).x;
+                       rot.x += (mouseDiff * handRotationMultiplier).y;
+                       currentHand.transform.Rotate(rot * Time.deltaTime);
+                   }
+               }
+               else //Position
+               {
+                   if (Input.GetKey(changeAxis))
+                   {
+                       Vector3 pos = Vector3.zero;
+                       pos += mouseDiff * handMoveMultiplier;
+                       currentHand.transform.Translate(pos * Time.deltaTime);
+                   }
+                   else
+                   {
+                       Vector3 pos = Vector3.zero;
+                       pos.x += (mouseDiff * handMoveMultiplier).x;
+                       pos.z += (mouseDiff * handMoveMultiplier).y;
+                       currentHand.transform.Translate(pos * Time.deltaTime);
+                   }
+               }
+           }
         }
 
         private void UpdateRotation()
         {
-            Vector3 mouseDiff = GetMouseDelta();
+           Vector3 mouseDiff = GetMouseDelta();
 
-            if (IsAcceptingMouseInput())
-            {
-                Vector3 rot = transform.localRotation.eulerAngles;
-                rot.y += (mouseDiff * playerRotationMultiplier).x;
-                transform.localRotation = Quaternion.Euler(rot);
+           if (IsAcceptingMouseInput())
+           {
+               Vector3 rot = transform.localRotation.eulerAngles;
+               rot.y += (mouseDiff * playerRotationMultiplier).x;
+               transform.localRotation = Quaternion.Euler(rot);
 
-                rot = neck.rotation.eulerAngles;
+               rot = neck.rotation.eulerAngles;
 
-                if (rot.x > 180)
-                {
-                    rot.x -= 360;
-                }
+               if (rot.x > 180)
+               {
+                   rot.x -= 360;
+               }
 
-                if (rot.x < 80 && rot.x > -80)
-                {
-                    rot.x += (mouseDiff * playerRotationMultiplier).y * -1;
-                    rot.x = Mathf.Clamp(rot.x, -79, 79);
-                    neck.rotation = Quaternion.Euler(rot);
-                }
-            }
+               if (rot.x < 80 && rot.x > -80)
+               {
+                   rot.x += (mouseDiff * playerRotationMultiplier).y * -1;
+                   rot.x = Mathf.Clamp(rot.x, -79, 79);
+                   neck.rotation = Quaternion.Euler(rot);
+               }
+           }
         }
 
         private void UpdatePosition()
         {
-            float moveMod = Time.deltaTime * playerMoveMultiplier * sprintMultiplier;
-            if (Input.GetKey(moveForward))
-            {
-                transform.Translate(transform.forward * moveMod, Space.World);
-            }
-            else if (Input.GetKey(moveBackward))
-            {
-                transform.Translate(-transform.forward * moveMod, Space.World);
-            }
-            if (Input.GetKey(moveLeft))
-            {
-                transform.Translate(-transform.right * moveMod, Space.World);
-            }
-            else if (Input.GetKey(moveRight))
-            {
-                transform.Translate(transform.right * moveMod, Space.World);
-            }
+           float moveMod = Time.deltaTime * playerMoveMultiplier * sprintMultiplier;
+           if (Input.GetKey(moveForward))
+           {
+               transform.Translate(transform.forward * moveMod, Space.World);
+           }
+           else if (Input.GetKey(moveBackward))
+           {
+               transform.Translate(-transform.forward * moveMod, Space.World);
+           }
+           if (Input.GetKey(moveLeft))
+           {
+               transform.Translate(-transform.right * moveMod, Space.World);
+           }
+           else if (Input.GetKey(moveRight))
+           {
+               transform.Translate(transform.right * moveMod, Space.World);
+           }
         }
 
         private void SetHand()
         {
-            Cursor.visible = false;
-            isHand = true;
-            rightHand.gameObject.SetActive(true);
-            leftHand.gameObject.SetActive(true);
-            oldPos = Input.mousePosition;
-            if (resetHandsAtSwitch)
-            {
-                rightHand.transform.localPosition = new Vector3(0.2f, 1.2f, 0.5f);
-                rightHand.transform.localRotation = Quaternion.identity;
-                leftHand.transform.localPosition = new Vector3(-0.2f, 1.2f, 0.5f);
-                leftHand.transform.localRotation = Quaternion.identity;
-            }
+           Cursor.visible = false;
+           isHand = true;
+           rightHand.gameObject.SetActive(true);
+           leftHand.gameObject.SetActive(true);
+           oldPos = Input.mousePosition;
+           if (resetHandsAtSwitch)
+           {
+               rightHand.transform.localPosition = new Vector3(0.2f, 1.2f, 0.5f);
+               rightHand.transform.localRotation = Quaternion.identity;
+               leftHand.transform.localPosition = new Vector3(-0.2f, 1.2f, 0.5f);
+               leftHand.transform.localRotation = Quaternion.identity;
+           }
         }
 
         private void SetMove()
         {
-            Cursor.visible = true;
-            isHand = false;
-            if (hideHandsAtSwitch)
-            {
-                rightHand.gameObject.SetActive(false);
-                leftHand.gameObject.SetActive(false);
-            }
+           Cursor.visible = true;
+           isHand = false;
+           if (hideHandsAtSwitch)
+           {
+               rightHand.gameObject.SetActive(false);
+               leftHand.gameObject.SetActive(false);
+           }
         }
 
         private void UpdateHints()
@@ -499,21 +497,21 @@ namespace VRTK
 
         private bool IsAcceptingMouseInput()
         {
-            return mouseMovementInput == MouseInputMode.Always || Input.GetKey(mouseMovementKey);
+           return mouseMovementInput == MouseInputMode.Always || Input.GetKey(mouseMovementKey);
         }
 
         private Vector3 GetMouseDelta()
         {
-            if (Cursor.lockState == CursorLockMode.Locked)
-            {
-                return new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-            }
-            else
-            {
-                Vector3 mouseDiff = Input.mousePosition - oldPos;
-                oldPos = Input.mousePosition;
-                return mouseDiff;
-            }
+           if (Cursor.lockState == CursorLockMode.Locked)
+           {
+               return new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+           }
+           else
+           {
+               Vector3 mouseDiff = Input.mousePosition - oldPos;
+               oldPos = Input.mousePosition;
+               return mouseDiff;
+           }
         }
     }
 }
