@@ -17,6 +17,9 @@ namespace NS {
 		public float maxStandHeight = .25f;
 		public float maxIncline = 45;
 
+		#if SHOW_LINES
+		public bool showLines = true;
+		#endif
 		public bool alignBody = true;
 		public bool alignBodyWithAngularVelocity = false;
 		public bool alignBodyToGround = false;
@@ -205,11 +208,13 @@ namespace NS {
 		void BodyOrientationUpdate() {
 			SetFacing ();
 			#if SHOW_LINES
+			if(showLines){
 			Vector3 p = transform.position;
 			NS.Lines.MakeArrow (ref line_f, p, p + foreDir*2, Color.blue);
 			NS.Lines.MakeArrow (ref line_s, p, p + sideDir*2, Color.red);
 			NS.Lines.MakeArrow (ref line_velocity, p, p + rb.velocity*2, Color.magenta);
 			NS.Lines.MakeArrow (ref line_horizon, p, p + dirHorizon*2, Color.cyan);
+			}
 			#endif
 
 			Transform par = viewCamera.transform.parent;
@@ -327,7 +332,7 @@ namespace NS {
 					Vector3 againstHill = Vector3.Cross (gravityDirection, groundR).normalized;
 					Vector3 p = transform.position;
 					#if SHOW_LINES
-				NS.Lines.MakeArrow (ref line_against, p, p + againstHill, Color.black);
+					if(showLines) NS.Lines.MakeArrow (ref line_against, p, p + againstHill, Color.black);
 					#endif
 
 					float againstWallAmount = Vector3.Dot (againstHill, rb.velocity);
@@ -352,13 +357,17 @@ namespace NS {
 						hip = transform.TransformVector (hip);
 					}
 					#if SHOW_LINES
-				NS.Lines.Make (ref line_leg, transform.position+hip, 
+					if(showLines) NS.Lines.Make (ref line_leg, transform.position+hip, 
 					                      transform.position+hip + gravityDirection * -maxStandHeight, Color.magenta);
 					#endif
 					if (Physics.Raycast (transform.position + hip, gravityDirection, out rh, maxStandHeight)
 					&& rh.collider.gameObject != gameObject) {
+						#if SHOW_LINES
+						if(showLines){
 						LineRenderer lr = line_leg.GetComponent<LineRenderer> ();
 						lr.startColor = Random.ColorHSV ();
+						}
+						#endif
 						onGround = true;
 						groundNormal = rh.normal;
 						if (rh.distance <= hoverDistance + epsilon) {
@@ -377,11 +386,11 @@ namespace NS {
 							standing = false;
 						} // commented out to stop tiny bouncing caused by foot
 						#if SHOW_LINES
-					NS.Lines.MakeCircle (ref line_shadow, rh.point, rh.normal, Color.yellow, 0.25f);
+						if(showLines) NS.Lines.MakeCircle (ref line_shadow, rh.point, rh.normal, Color.yellow, 0.25f);
 						#endif
 					} else {
 						#if SHOW_LINES
-					NS.Lines.Make (ref line_shadow, rh.point, rh.point, Color.yellow);
+						if(showLines) NS.Lines.Make (ref line_shadow, rh.point, rh.point, Color.yellow);
 						#endif
 						onGround = false;
 						standingOn = null;
