@@ -6,34 +6,34 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// The `VRSimulatorCameraRig` prefab is a mock Camera Rig set up that can be used to develop with VRTK without the need for VR Hardware.
+    /// Used to get Mr.V's hand controller interface to work with VRTK.
+    /// This is a Modified version of VRTK.SDK_InputSimulator
     /// </summary>
-    /// <remarks>
-    /// Use the mouse and keyboard to move around both play area and hands and interacting with objects without the need of a hmd or VR controls.
-    /// </remarks>
     public class VRTK_InputSimulator : MonoBehaviour
     {
+        HandController hc;
+
         /// <summary>
         /// Mouse input mode types
         /// </summary>
         /// <param name="Always">Mouse movement is always treated as mouse input.</param>
         /// <param name="RequiresButtonPress">Mouse movement is only treated as movement when a button is pressed.</param>
-        public enum MouseInputMode
-        {
-            Always,
-            RequiresButtonPress
-        }
+        // public enum MouseInputMode
+        // {
+        //     Always,
+        //     RequiresButtonPress
+        // }
 
         #region Public fields
 
-        [Tooltip("Show control information in the upper left corner of the screen.")]
-        public bool showControlHints = true;
+        // [Tooltip("Show control information in the upper left corner of the screen.")]
+        // public bool showControlHints = true;
         //[Tooltip("Hide hands when disabling them.")]
         //public bool hideHandsAtSwitch = false;
         //[Tooltip("Reset hand position and rotation when enabling them.")]
         //public bool resetHandsAtSwitch = true;
-        [Tooltip("Whether mouse movement always acts as input or requires a button press.")]
-        public MouseInputMode mouseMovementInput = MouseInputMode.Always;
+        // [Tooltip("Whether mouse movement always acts as input or requires a button press.")]
+        // public MouseInputMode mouseMovementInput = MouseInputMode.Always;
         //[Tooltip("Lock the mouse cursor to the game window when the mouse movement key is pressed.")]
         //public bool lockMouseToView = true;
 
@@ -41,7 +41,7 @@
 		//public bool disableLocomotion = false;
 		//public bool disableRotation = false;
 
-        [Header("Adjustments")]
+        //[Header("Adjustments")]
 
         //[Tooltip("Adjust hand movement speed.")]
         //public float handMoveMultiplier = 0.002f;
@@ -54,20 +54,20 @@
         //[Tooltip("Adjust player sprint speed.")]
         //public float playerSprintMultiplier = 2;
 
-        [Header("Operation Key Bindings")]
+        // [Header("Operation Key Bindings")]
 
-        [Tooltip("Key used to enable mouse input if a button press is required.")]
-        public KeyCode mouseMovementKey = KeyCode.Mouse1;
-        [Tooltip("Key used to toggle control hints on/off.")]
-        public KeyCode toggleControlHints = KeyCode.F1;
-        [Tooltip("Key used to switch between left and righ hand.")]
-        public KeyCode changeHands = KeyCode.Tab;
-        [Tooltip("Key used to switch hands On/Off.")]
-        public KeyCode handsOnOff = KeyCode.LeftAlt;
-        [Tooltip("Key used to switch between positional and rotational movement.")]
-        public KeyCode rotationPosition = KeyCode.LeftShift;
-        [Tooltip("Key used to switch between X/Y and X/Z axis.")]
-        public KeyCode changeAxis = KeyCode.LeftControl;
+        // [Tooltip("Key used to enable mouse input if a button press is required.")]
+        // public KeyCode mouseMovementKey = KeyCode.Mouse1;
+        // [Tooltip("Key used to toggle control hints on/off.")]
+        // public KeyCode toggleControlHints = KeyCode.F1;
+        // [Tooltip("Key used to switch between left and righ hand.")]
+        // public KeyCode changeHands = KeyCode.Tab;
+        // [Tooltip("Key used to switch hands On/Off.")]
+        // public KeyCode handsOnOff = KeyCode.LeftAlt;
+        // [Tooltip("Key used to switch between positional and rotational movement.")]
+        // public KeyCode rotationPosition = KeyCode.LeftShift;
+        // [Tooltip("Key used to switch between X/Y and X/Z axis.")]
+        // public KeyCode changeAxis = KeyCode.LeftControl;
         // [Tooltip("Key used to distance pickup with left hand.")]
         // public KeyCode distancePickupLeft = KeyCode.Mouse0;
         // [Tooltip("Key used to distance pickup with right hand.")]
@@ -89,10 +89,10 @@
         // public KeyCode sprint = KeyCode.LeftShift;
 
         [Header("Controller Key Bindings")]
-        [Tooltip("Key used to simulate trigger button.")]
-        public KeyCode triggerAlias = KeyCode.Mouse0;
-        [Tooltip("Key used to simulate grip button.")]
-        public KeyCode gripAlias = KeyCode.Mouse1;
+        // [Tooltip("Key used to simulate trigger button.")]
+        // public KeyCode triggerAlias = KeyCode.Mouse0;
+        // [Tooltip("Key used to simulate grip button.")]
+        // public KeyCode gripAlias = KeyCode.Mouse1;
         [Tooltip("Key used to simulate touchpad button.")]
         public KeyCode touchpadAlias = KeyCode.T;
         [Tooltip("Key used to simulate button one.")]
@@ -110,8 +110,8 @@
         #region Private fields
 
         private bool isHand = false;
-        private GameObject hintCanvas;
-        private Text hintText;
+        // private GameObject hintCanvas;
+        // private Text hintText;
         private Transform rightHand;
         private Transform leftHand;
         private Transform currentHand;
@@ -121,8 +121,8 @@
         private SDK_ControllerSim leftController;
         private static GameObject cachedCameraRig;
         private static bool destroyed = false;
-        private float sprintMultiplier = 1;
-        private GameObject crossHairPanel;
+        // private float sprintMultiplier = 1;
+        // private GameObject crossHairPanel;
 
         #endregion
 
@@ -150,13 +150,14 @@
 
         private void OnEnable()
         {
-            hintCanvas = transform.Find("Canvas/Control Hints").gameObject;
-            crossHairPanel = transform.Find("Canvas/CrosshairPanel").gameObject;
-            hintText = hintCanvas.GetComponentInChildren<Text>();
-            hintCanvas.SetActive(showControlHints);
-            rightHand = transform.Find("RightHand");
+            hc = GetComponent<HandController>();
+            // hintCanvas = transform.Find("Canvas/Control Hints").gameObject;
+            // crossHairPanel = transform.Find("Canvas/CrosshairPanel").gameObject;
+            // hintText = hintCanvas.GetComponentInChildren<Text>();
+            // hintCanvas.SetActive(showControlHints);
+            rightHand = transform.Find("RightHand");//hc.handVisuals[0].transform;
             rightHand.gameObject.SetActive(false);
-            leftHand = transform.Find("LeftHand");
+            leftHand = transform.Find("LeftHand");//hc.handVisuals[1].transform;
             leftHand.gameObject.SetActive(false);
             currentHand = rightHand;
             oldPos = Input.mousePosition;
@@ -174,8 +175,8 @@
             {
                 Dictionary<string, KeyCode> keyMappings = new Dictionary<string, KeyCode>()
                 {
-                    {"Trigger", triggerAlias },
-                    {"Grip", gripAlias },
+                    {"Trigger", hc.triggerButton },
+                    {"Grip", hc.gripButton },
                     {"TouchpadPress", touchpadAlias },
                     {"ButtonOne", buttonOneAlias },
                     {"ButtonTwo", buttonTwoAlias },
@@ -187,7 +188,7 @@
             }
             rightHand.gameObject.SetActive(true);
             leftHand.gameObject.SetActive(true);
-            crossHairPanel.SetActive(false);
+            // crossHairPanel.SetActive(false);
         }
 
         private void OnDestroy()
@@ -196,124 +197,124 @@
             destroyed = true;
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(toggleControlHints))
-            {
-                showControlHints = !showControlHints;
-                hintCanvas.SetActive(showControlHints);
-            }
+        // private void Update()
+        // {
+        //     // if (Input.GetKeyDown(hc.toggleInstructionsKey))
+        //     // {
+        //     //     showControlHints = !showControlHints;
+        //     //     hintCanvas.SetActive(showControlHints);
+        //     // }
 
-            //if (mouseMovementInput == MouseInputMode.RequiresButtonPress)
-            //{
-            //    if (lockMouseToView)
-            //    {
-            //        Cursor.lockState = Input.GetKey(mouseMovementKey) ? CursorLockMode.Locked : CursorLockMode.None;
-            //    }
-            //    else if (Input.GetKeyDown(mouseMovementKey))
-            //    {
-            //        oldPos = Input.mousePosition;
-            //    }
-            //}
+        //     //if (mouseMovementInput == MouseInputMode.RequiresButtonPress)
+        //     //{
+        //     //    if (lockMouseToView)
+        //     //    {
+        //     //        Cursor.lockState = Input.GetKey(mouseMovementKey) ? CursorLockMode.Locked : CursorLockMode.None;
+        //     //    }
+        //     //    else if (Input.GetKeyDown(mouseMovementKey))
+        //     //    {
+        //     //        oldPos = Input.mousePosition;
+        //     //    }
+        //     //}
 
-            //if (Input.GetKeyDown(handsOnOff))
-            //{
-            //    if (isHand)
-            //    {
-            //        SetMove();
-            //    }
-            //    else
-            //    {
-            //        SetHand();
-            //    }
-            //}
+        //     //if (Input.GetKeyDown(handsOnOff))
+        //     //{
+        //     //    if (isHand)
+        //     //    {
+        //     //        SetMove();
+        //     //    }
+        //     //    else
+        //     //    {
+        //     //        SetHand();
+        //     //    }
+        //     //}
 
-            //if (Input.GetKeyDown(changeHands))
-            //{
-            //    if (currentHand.name == "LeftHand")
-            //    {
-            //        currentHand = rightHand;
-            //        rightController.Selected = true;
-            //        leftController.Selected = false;
-            //    }
-            //    else
-            //    {
-            //        currentHand = leftHand;
-            //        rightController.Selected = false;
-            //        leftController.Selected = true;
-            //    }
-            //}
+        //     //if (Input.GetKeyDown(changeHands))
+        //     //{
+        //     //    if (currentHand.name == "LeftHand")
+        //     //    {
+        //     //        currentHand = rightHand;
+        //     //        rightController.Selected = true;
+        //     //        leftController.Selected = false;
+        //     //    }
+        //     //    else
+        //     //    {
+        //     //        currentHand = leftHand;
+        //     //        rightController.Selected = false;
+        //     //        leftController.Selected = true;
+        //     //    }
+        //     //}
 
-            //if (isHand)
-            //{
-            //    UpdateHands();
-            //}
-            //else
-            //{
-				//if (!disableRotation) {
-				//	UpdateRotation ();
-				//}
-                // if(Input.GetKeyDown(distancePickupRight) && Input.GetKey(distancePickupModifier))
-                // {
-                //     TryPickup(true);
-                // }
-                // else if(Input.GetKeyDown(distancePickupLeft) && Input.GetKey(distancePickupModifier))
-                // {
-                //     TryPickup(false);
-                // }
-                //if(Input.GetKey(sprint))
-                //{
-                //    sprintMultiplier = playerSprintMultiplier;
-                //}
-                //else
-                //{
-                //    sprintMultiplier = 1;
-                //}
-                // if(Input.GetKeyDown(distancePickupModifier))
-                // {
-                //     crossHairPanel.SetActive(true);
-                // }
-                // else if(Input.GetKeyUp(distancePickupModifier))
-                // {
-                //     crossHairPanel.SetActive(false);
-                // }
-            //}
-			//if (!disableLocomotion) {
-			//	UpdatePosition ();
-			//}
-            if (showControlHints)
-            {
-                UpdateHints();
-            }
-        }
+        //     //if (isHand)
+        //     //{
+        //     //    UpdateHands();
+        //     //}
+        //     //else
+        //     //{
+		// 		//if (!disableRotation) {
+		// 		//	UpdateRotation ();
+		// 		//}
+        //         // if(Input.GetKeyDown(distancePickupRight) && Input.GetKey(distancePickupModifier))
+        //         // {
+        //         //     TryPickup(true);
+        //         // }
+        //         // else if(Input.GetKeyDown(distancePickupLeft) && Input.GetKey(distancePickupModifier))
+        //         // {
+        //         //     TryPickup(false);
+        //         // }
+        //         //if(Input.GetKey(sprint))
+        //         //{
+        //         //    sprintMultiplier = playerSprintMultiplier;
+        //         //}
+        //         //else
+        //         //{
+        //         //    sprintMultiplier = 1;
+        //         //}
+        //         // if(Input.GetKeyDown(distancePickupModifier))
+        //         // {
+        //         //     crossHairPanel.SetActive(true);
+        //         // }
+        //         // else if(Input.GetKeyUp(distancePickupModifier))
+        //         // {
+        //         //     crossHairPanel.SetActive(false);
+        //         // }
+        //     //}
+		// 	//if (!disableLocomotion) {
+		// 	//	UpdatePosition ();
+		// 	//}
+        //     // if (showControlHints)
+        //     // {
+        //     //     UpdateHints();
+        //     // }
+        // }
 
-        private void TryPickup(bool rightHand)
-        {
-            Ray screenRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-            RaycastHit hit;
-            if(Physics.Raycast(screenRay, out hit))
-            {
-                VRTK_InteractableObject io = hit.collider.gameObject.GetComponent<VRTK_InteractableObject>();
-                if(io)
-                {
-                    GameObject hand;
-                    if(rightHand)
-                    {
-                        hand = VRTK_DeviceFinder.GetControllerRightHand();
-                    }
-                    else
-                    {
-                        hand = VRTK_DeviceFinder.GetControllerLeftHand();
-                    }
-                    VRTK_InteractGrab grab = hand.GetComponent<VRTK_InteractGrab>();
-                    if(grab.GetGrabbedObject() == null)
-                    {
-                        hand.GetComponent<VRTK_InteractTouch>().ForceTouch(hit.collider.gameObject);
-                        grab.AttemptGrab();
-                    }
-                }
-            }
-        }
+        // private void TryPickup(bool rightHand)
+        // {
+        //     Ray screenRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        //     RaycastHit hit;
+        //     if(Physics.Raycast(screenRay, out hit))
+        //     {
+        //         VRTK_InteractableObject io = hit.collider.gameObject.GetComponent<VRTK_InteractableObject>();
+        //         if(io)
+        //         {
+        //             GameObject hand;
+        //             if(rightHand)
+        //             {
+        //                 hand = VRTK_DeviceFinder.GetControllerRightHand();
+        //             }
+        //             else
+        //             {
+        //                 hand = VRTK_DeviceFinder.GetControllerLeftHand();
+        //             }
+        //             VRTK_InteractGrab grab = hand.GetComponent<VRTK_InteractGrab>();
+        //             if(grab.GetGrabbedObject() == null)
+        //             {
+        //                 hand.GetComponent<VRTK_InteractTouch>().ForceTouch(hit.collider.gameObject);
+        //                 grab.AttemptGrab();
+        //             }
+        //         }
+        //     }
+        // }
 
         //private void UpdateHands()
         //{
@@ -431,76 +432,76 @@
         //    }
         //}
 
-        private void UpdateHints()
-        {
-            string hints = "";
-            Func<KeyCode, string> key = (k) => "<b>" + k.ToString() + "</b>";
+        // private void UpdateHints()
+        // {
+        //     string hints = "";
+        //     Func<KeyCode, string> key = (k) => "<b>" + k.ToString() + "</b>";
 
-            string mouseInputRequires = "";
-            if (mouseMovementInput == MouseInputMode.RequiresButtonPress)
-            {
-                mouseInputRequires = " (" + key(mouseMovementKey) + ")";
-            }
+        //     string mouseInputRequires = "";
+        //     // if (mouseMovementInput == MouseInputMode.RequiresButtonPress)
+        //     // {
+        //     //     mouseInputRequires = " (" + key(mouseMovementKey) + ")";
+        //     // }
 
-            // WASD Movement
-            string movementKeys = "";//moveForward.ToString() + moveLeft.ToString() + moveBackward.ToString() + moveRight.ToString();
-            hints += "Toggle Control Hints: " + key(toggleControlHints) + "\n\n";
-            hints += "Move Player/Playspace: <b>" + movementKeys + "</b>\n";
-            // hints += "Sprint Modifier: (" + key(sprint) + ")\n\n";
+        //     // WASD Movement
+        //     string movementKeys = "";//moveForward.ToString() + moveLeft.ToString() + moveBackward.ToString() + moveRight.ToString();
+        //     hints += "Toggle Control Hints: " + key(hc.toggleInstructionsKey) + "\n\n";
+        //     hints += "Move Player/Playspace: <b>" + movementKeys + "</b>\n";
+        //     // hints += "Sprint Modifier: (" + key(sprint) + ")\n\n";
 
-            if (isHand)
-            {
-                // Controllers
-                if (Input.GetKey(rotationPosition))
-                {
-                    hints += "Mouse: <b>Controller Rotation" + mouseInputRequires + "</b>\n";
-                }
-                else
-                {
-                    hints += "Mouse: <b>Controller Position" + mouseInputRequires + "</b>\n";
-                }
-                hints += "Modes: HMD (" + key(handsOnOff) + "), Rotation (" + key(rotationPosition) + ")\n";
+        //     if (isHand)
+        //     {
+        //         // Controllers
+        //         if (Input.GetKey(hc.handRotateKey))
+        //         {
+        //             hints += "Mouse: <b>Controller Rotation" + mouseInputRequires + "</b>\n";
+        //         }
+        //         else
+        //         {
+        //             hints += "Mouse: <b>Controller Position" + mouseInputRequires + "</b>\n";
+        //         }
+        //         hints += "Modes: HMD (" + key(hc.handControlKey) + "), Rotation (" + key(hc.handRotateKey) + ")\n";
 
-                hints += "Controller Hand: " + currentHand.name.Replace("Hand", "") + " (" + key(changeHands) + ")\n";
+        //         hints += "Controller Hand: " + currentHand.name.Replace("Hand", "") + " (" + key(hc.switchControllerKey) + ")\n";
 
-                string axis = Input.GetKey(changeAxis) ? "X/Y" : "X/Z";
-                hints += "Axis: " + axis + " (" + key(changeAxis) + ")\n";
+        //         // string axis = Input.GetKey(changeAxis) ? "X/Y" : "X/Z";
+        //         // hints += "Axis: " + axis + " (" + key(changeAxis) + ")\n";
 
-                // Controller Buttons
-                string pressMode = "Press";
-                if (Input.GetKey(hairTouchModifier))
-                {
-                    pressMode = "Hair Touch";
-                }
-                else if (Input.GetKey(touchModifier))
-                {
-                    pressMode = "Touch";
-                }
+        //         // Controller Buttons
+        //         string pressMode = "Press";
+        //         if (Input.GetKey(hairTouchModifier))
+        //         {
+        //             pressMode = "Hair Touch";
+        //         }
+        //         else if (Input.GetKey(touchModifier))
+        //         {
+        //             pressMode = "Touch";
+        //         }
 
-                hints += "\nButton Press Mode Modifiers: Touch (" + key(touchModifier) + "), Hair Touch (" + key(hairTouchModifier) + ")\n";
+        //         hints += "\nButton Press Mode Modifiers: Touch (" + key(touchModifier) + "), Hair Touch (" + key(hairTouchModifier) + ")\n";
 
-                hints += "Trigger " + pressMode + ": " + key(triggerAlias) + "\n";
-                hints += "Grip " + pressMode + ": " + key(gripAlias) + "\n";
-                if (!Input.GetKey(hairTouchModifier))
-                {
-                    hints += "Touchpad " + pressMode + ": " + key(touchpadAlias) + "\n";
-                    hints += "Button One " + pressMode + ": " + key(buttonOneAlias) + "\n";
-                    hints += "Button Two " + pressMode + ": " + key(buttonTwoAlias) + "\n";
-                    hints += "Start Menu " + pressMode + ": " + key(startMenuAlias) + "\n";
-                }
-            }
-            else
-            {
-                // HMD Input
-                hints += "Mouse: <b>HMD Rotation" + mouseInputRequires + "</b>\n";
-                hints += "Modes: Controller (" + key(handsOnOff) + ")\n";
-                // hints += "Distance Pickup Modifier: (" + key(distancePickupModifier) + ")\n";
-                // hints += "Distance Pickup Left Hand: (" + key(distancePickupLeft) + ")\n";
-                // hints += "Distance Pickup Right Hand: (" + key(distancePickupRight) + ")\n";
-            }
+        //         hints += "Trigger " + pressMode + ": " + key(hc.triggerButton) + "\n";
+        //         hints += "Grip " + pressMode + ": " + key(hc.gripButton) + "\n";
+        //         if (!Input.GetKey(hairTouchModifier))
+        //         {
+        //             hints += "Touchpad " + pressMode + ": " + key(touchpadAlias) + "\n";
+        //             hints += "Button One " + pressMode + ": " + key(buttonOneAlias) + "\n";
+        //             hints += "Button Two " + pressMode + ": " + key(buttonTwoAlias) + "\n";
+        //             hints += "Start Menu " + pressMode + ": " + key(startMenuAlias) + "\n";
+        //         }
+        //     }
+        //     else
+        //     {
+        //         // HMD Input
+        //         hints += "Mouse: <b>HMD Rotation" + mouseInputRequires + "</b>\n";
+        //         hints += "Modes: Controller (" + key(hc.handControlKey) + ")\n";
+        //         // hints += "Distance Pickup Modifier: (" + key(distancePickupModifier) + ")\n";
+        //         // hints += "Distance Pickup Left Hand: (" + key(distancePickupLeft) + ")\n";
+        //         // hints += "Distance Pickup Right Hand: (" + key(distancePickupRight) + ")\n";
+        //     }
 
-            hintText.text = hints.TrimEnd();
-        }
+        //     hintText.text = hints.TrimEnd();
+        // }
 
         //private bool IsAcceptingMouseInput()
         //{
