@@ -9,7 +9,7 @@
     /// Used to get Mr.V's hand controller interface to work with VRTK.
     /// This is a Modified version of VRTK.SDK_InputSimulator
     /// </summary>
-    public class VRTK_InputSimulator : MonoBehaviour
+    public class NSVRTK_InputSimulator : MonoBehaviour
     {
         HandController hc;
 
@@ -109,16 +109,16 @@
         #endregion
         #region Private fields
 
-        private bool isHand = false;
+        // private bool isHand = false;
         // private GameObject hintCanvas;
         // private Text hintText;
-        private Transform rightHand;
-        private Transform leftHand;
-        private Transform currentHand;
-        private Vector3 oldPos;
-        private Transform neck;
-        private SDK_ControllerSim rightController;
-        private SDK_ControllerSim leftController;
+        // private Transform rightHand;
+        // private Transform leftHand;
+        // private Transform currentHand;
+        // private Vector3 oldPos;
+        // private Transform neck;
+        // private SDK_ControllerSim rightController;
+        // private SDK_ControllerSim leftController;
         private static GameObject cachedCameraRig;
         private static bool destroyed = false;
         // private float sprintMultiplier = 1;
@@ -130,7 +130,7 @@
         /// The FindInScene method is used to find the `VRSimulatorCameraRig` GameObject within the current scene.
         /// </summary>
         /// <returns>Returns the found `VRSimulatorCameraRig` GameObject if it is found. If it is not found then it prints a debug log error.</returns>
-        public static GameObject FindInScene()
+        public static GameObject FindInScene() // needs to somehow get called instead of SDK_InputSimulator.FindInScene()
         {
             if (cachedCameraRig == null && !destroyed)
             {
@@ -155,17 +155,17 @@
             // crossHairPanel = transform.Find("Canvas/CrosshairPanel").gameObject;
             // hintText = hintCanvas.GetComponentInChildren<Text>();
             // hintCanvas.SetActive(showControlHints);
-            rightHand = transform.Find("RightHand");//hc.handVisuals[0].transform;
+            Transform rightHand = hc.moveControllerRoots[0];//transform.Find("RightHand");
             rightHand.gameObject.SetActive(false);
-            leftHand = transform.Find("LeftHand");//hc.handVisuals[1].transform;
+            Transform leftHand = hc.moveControllerRoots[1];//transform.Find("LeftHand");
             leftHand.gameObject.SetActive(false);
-            currentHand = rightHand;
-            oldPos = Input.mousePosition;
-            neck = transform.Find("Neck");
-            leftHand.Find("Hand").GetComponent<Renderer>().material.color = Color.red;
-            rightHand.Find("Hand").GetComponent<Renderer>().material.color = Color.green;
-            rightController = rightHand.GetComponent<SDK_ControllerSim>();
-            leftController = leftHand.GetComponent<SDK_ControllerSim>();
+            // currentHand = rightHand;
+            // oldPos = Input.mousePosition;
+            // neck = transform.Find("Neck");
+            // leftHand.Find("Hand").GetComponent<Renderer>().material.color = Color.red;
+            // rightHand.Find("Hand").GetComponent<Renderer>().material.color = Color.green;
+            SDK_ControllerSim rightController = rightHand.GetComponent<SDK_ControllerSim>();
+            SDK_ControllerSim leftController = leftHand.GetComponent<SDK_ControllerSim>();
             rightController.Selected = true;
             leftController.Selected = false;
             destroyed = false;
