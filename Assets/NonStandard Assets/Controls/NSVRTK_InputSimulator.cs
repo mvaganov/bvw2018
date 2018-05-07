@@ -197,17 +197,8 @@
             destroyed = true;
         }
 
-        private int lastKnownMoveControllerIndex = -1;
-        private void FixedUpdate() {
-            if(hc.GetMoveControllerIndex() != lastKnownMoveControllerIndex) {
-                lastKnownMoveControllerIndex = hc.GetMoveControllerIndex();
-                for(int i = 0; i < hc.moveControllerRoots.Length; ++i) {
-                    hc.moveControllerRoots[i].GetComponent<SDK_ControllerSim>().Selected = false;
-                }
-                hc.moveControllerRoots[lastKnownMoveControllerIndex].GetComponent<SDK_ControllerSim>().Selected = true;
-            }
-        }
-        // private void Update() {
+        // private void Update()
+        // {
         //     // if (Input.GetKeyDown(hc.toggleInstructionsKey))
         //     // {
         //     //     showControlHints = !showControlHints;
@@ -238,21 +229,21 @@
         //     //    }
         //     //}
 
-            // if (Input.GetKeyDown(changeHands))
-            // {
-            //    if (currentHand.name == "LeftHand")
-            //    {
-            //        currentHand = rightHand;
-            //        rightController.Selected = true;
-            //        leftController.Selected = false;
-            //    }
-            //    else
-            //    {
-            //        currentHand = leftHand;
-            //        rightController.Selected = false;
-            //        leftController.Selected = true;
-            //    }
-            // }
+        //     //if (Input.GetKeyDown(changeHands))
+        //     //{
+        //     //    if (currentHand.name == "LeftHand")
+        //     //    {
+        //     //        currentHand = rightHand;
+        //     //        rightController.Selected = true;
+        //     //        leftController.Selected = false;
+        //     //    }
+        //     //    else
+        //     //    {
+        //     //        currentHand = leftHand;
+        //     //        rightController.Selected = false;
+        //     //        leftController.Selected = true;
+        //     //    }
+        //     //}
 
         //     //if (isHand)
         //     //{
