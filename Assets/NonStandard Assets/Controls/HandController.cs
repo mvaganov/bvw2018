@@ -29,7 +29,6 @@ public class HandController : MonoBehaviour {
 	// public ButtonUse howToGrab = ButtonUse.toggleButton;
 	// public ButtonUse howToUse = ButtonUse.holdButton;
 
-	public int GetMoveControllerIndex() { return currentMoveControllerIndex; }
 	public Transform CurrentMoveController { get { return moveControllerRoots [currentMoveControllerIndex]; } }
 
 	/// <summary>reference to MoveControls.</summary>
