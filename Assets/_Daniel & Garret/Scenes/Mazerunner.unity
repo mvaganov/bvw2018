@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18827653, g: 0.19113824, b: 0.19110036, a: 1}
+  m_IndirectSpecularColor: {r: 0.18827644, g: 0.19113806, b: 0.1911003, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -388,7 +388,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -2498,11 +2498,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400042, guid: 89f54d1c7a4610f48ad49ef04f78ee1f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -10.71
+      value: -10.763
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: 89f54d1c7a4610f48ad49ef04f78ee1f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.94
+      value: -0.032
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: 89f54d1c7a4610f48ad49ef04f78ee1f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4189,7 +4189,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &988132159
 GameObject:
@@ -4440,11 +4440,7 @@ GameObject:
   - component: {fileID: 1129730606}
   - component: {fileID: 1129730605}
   m_Layer: 0
-<<<<<<< HEAD
-  m_Name: VInes
-=======
   m_Name: Vines
->>>>>>> 0ec20559c26cd16df4cc3bd1893a67ccc3504d4f
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7678,7 +7674,7 @@ Prefab:
     - target: {fileID: 224685872239772504, guid: ab97afbb8a3537a4298ddbd09f084602,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 517
+      value: 846
       objectReference: {fileID: 0}
     - target: {fileID: 224685872239772504, guid: ab97afbb8a3537a4298ddbd09f084602,
         type: 2}
@@ -7698,6 +7694,14 @@ Prefab:
     - target: {fileID: 1177125887709374, guid: ab97afbb8a3537a4298ddbd09f084602, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235321071177108, guid: ab97afbb8a3537a4298ddbd09f084602, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235321071177108, guid: ab97afbb8a3537a4298ddbd09f084602, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.47
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab97afbb8a3537a4298ddbd09f084602, type: 2}
