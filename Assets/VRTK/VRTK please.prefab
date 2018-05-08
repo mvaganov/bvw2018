@@ -344,7 +344,6 @@ GameObject:
   - component: {fileID: 4257283810520732}
   - component: {fileID: 20659675535238362}
   - component: {fileID: 124381566484465498}
-  - component: {fileID: 81141661967456042}
   m_Layer: 5
   m_Name: Camera
   m_TagString: Untagged
@@ -622,6 +621,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4562491790421134}
   - component: {fileID: 114603264312240972}
+  - component: {fileID: 33374672342337022}
+  - component: {fileID: 23854609765510270}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -638,7 +639,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4499810647570350}
   - component: {fileID: 114897510595744866}
-  - component: {fileID: 114314286696418560}
   m_Layer: 0
   m_Name: Simulator
   m_TagString: Untagged
@@ -1545,7 +1545,6 @@ GameObject:
   - component: {fileID: 114998879551383048}
   - component: {fileID: 114173009883579620}
   - component: {fileID: 114848412243779932}
-  - component: {fileID: 114330946574491906}
   m_Layer: 0
   m_Name: VRSimulatorCameraRig
   m_TagString: Untagged
@@ -1882,7 +1881,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4604062062733456}
   - component: {fileID: 114167077469960536}
-  - component: {fileID: 114798202503796294}
   m_Layer: 0
   m_Name: OculusVR
   m_TagString: Untagged
@@ -2535,6 +2533,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4793988353282072}
   - component: {fileID: 114977645012969740}
+  - component: {fileID: 33546651512524846}
+  - component: {fileID: 23300916505754244}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -5038,6 +5038,41 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23300916505754244
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1978007928739570}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!23 &23302705923194754
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -6088,6 +6123,41 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23854609765510270
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304506818199412}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!23 &23871958202041948
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -6319,6 +6389,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1440359420113472}
   m_Mesh: {fileID: 4300006, guid: e99803b507045754b820e9d17ba7f3aa, type: 3}
+--- !u!33 &33374672342337022
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304506818199412}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33396110115549310
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -6389,6 +6466,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721567725776296}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33546651512524846
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1978007928739570}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33582763400321046
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -6664,13 +6748,6 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1683589367538956}
-  m_Enabled: 1
---- !u!81 &81141661967456042
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1177125887709374}
   m_Enabled: 1
 --- !u!81 &81667654225285828
 AudioListener:
@@ -7058,7 +7135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057015237f68bd74d9c6c6c28ea347e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreTriggerColliders: 0
+  ignoreTriggerColliders: 1
   colliderRadius: 0.1
   targetListPolicy: {fileID: 0}
   headsetColliding: 0
@@ -7817,17 +7894,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114314286696418560
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1305263512070784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c731730425e54447ae6bfcc41d6fe585, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114322052369967128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7880,49 +7946,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7a6650b6cb46545967d3b380b7396c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114330946574491906
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1656501041120754}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d0ccd621417664ca1f1123b9488a27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showControlHints: 1
-  hideHandsAtSwitch: 0
-  resetHandsAtSwitch: 1
-  mouseMovementInput: 0
-  lockMouseToView: 1
-  handMoveMultiplier: 0.002
-  handRotationMultiplier: 0.5
-  playerMoveMultiplier: 5
-  playerRotationMultiplier: 0.5
-  playerSprintMultiplier: 2
-  mouseMovementKey: 324
-  toggleControlHints: 282
-  changeHands: 9
-  handsOnOff: 308
-  rotationPosition: 304
-  changeAxis: 306
-  distancePickupLeft: 323
-  distancePickupRight: 324
-  distancePickupModifier: 306
-  moveForward: 119
-  moveLeft: 97
-  moveBackward: 115
-  moveRight: 100
-  sprint: 304
-  triggerAlias: 323
-  gripAlias: 324
-  touchpadAlias: 116
-  buttonOneAlias: 122
-  buttonTwoAlias: 120
-  startMenuAlias: 102
-  touchModifier: 121
-  hairTouchModifier: 104
 --- !u!114 &114353301286218468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9028,22 +9051,6 @@ MonoBehaviour:
     fallbackTypeName: VRTK.SDK_FallbackController
     typeName: VRTK.SDK_DaydreamController
     descriptionIndex: 0
---- !u!114 &114798202503796294
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1747980913580844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4bad529a7fb04ec6827e98d4af39523, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kind: 8
-  triggerTag: 
-  delayInSeconds: 0
-  whatToTrigger: {fileID: 0}
-  activate: 0
 --- !u!114 &114803123143275848
 MonoBehaviour:
   m_ObjectHideFlags: 1

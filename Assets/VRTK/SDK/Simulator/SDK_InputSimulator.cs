@@ -131,7 +131,13 @@ namespace VRTK
         {
             if (cachedCameraRig == null && !destroyed)
             {
-                cachedCameraRig = VRTK_SharedMethods.FindEvenInactiveGameObject<SDK_InputSimulator>();
+                // TODO make all of the 'SDK_Base' classes into MonoBehaviours, so they don't have to go looking for their own objects with gross global queries
+                VRTK.VRTK_SDKSetup[] setups = VRTK_SharedMethods.FindEvenInactiveComponents<VRTK.VRTK_SDKSetup>();
+                for(int i = 0; i < setups.Length; ++i) {
+                    if(setups[i].name.ToLower().StartsWith("simulator")) {
+                        cachedCameraRig = setups[i].actualBoundaries;
+                    }
+                }
                 if (!cachedCameraRig)
                 {
                     VRTK_Logger.Error(VRTK_Logger.GetCommonMessage(VRTK_Logger.CommonMessageKeys.REQUIRED_COMPONENT_MISSING_FROM_SCENE, "VRSimulatorCameraRig", "SDK_InputSimulator", ". check that the `VRTK/Prefabs/VRSimulatorCameraRig` prefab been added to the scene."));
