@@ -655,12 +655,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4562491790421134}
-<<<<<<< HEAD
   - component: {fileID: 33362539776796552}
   - component: {fileID: 23261124237607788}
-=======
-  - component: {fileID: 114603264312240972}
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -1017,7 +1013,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!1 &1411802762163440
 GameObject:
   m_ObjectHideFlags: 1
@@ -1035,8 +1030,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-=======
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
 --- !u!1 &1425088065611814
 GameObject:
   m_ObjectHideFlags: 1
@@ -1688,10 +1681,6 @@ GameObject:
   - component: {fileID: 54284619788103580}
   - component: {fileID: 114998879551383048}
   - component: {fileID: 114173009883579620}
-<<<<<<< HEAD
-=======
-  - component: {fileID: 114848412243779932}
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
   - component: {fileID: 114330946574491906}
   m_Layer: 0
   m_Name: VRSimulatorCameraRig
@@ -2698,12 +2687,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4793988353282072}
-<<<<<<< HEAD
   - component: {fileID: 33969385619914644}
   - component: {fileID: 23336693805391952}
-=======
-  - component: {fileID: 114977645012969740}
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -5236,7 +5221,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-<<<<<<< HEAD
 --- !u!23 &23279170310809236
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -5272,8 +5256,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-=======
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
 --- !u!23 &23302705923194754
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -6590,7 +6572,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1440359420113472}
   m_Mesh: {fileID: 4300006, guid: e99803b507045754b820e9d17ba7f3aa, type: 3}
-<<<<<<< HEAD
 --- !u!33 &33362539776796552
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -6598,8 +6579,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1304506818199412}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-=======
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
 --- !u!33 &33396110115549310
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -9000,24 +8979,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-<<<<<<< HEAD
-=======
---- !u!114 &114603264312240972
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1304506818199412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df82173257ae044698781c7d11336b38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grip: {fileID: 4795397032866692}
-  trigger: {fileID: 4599312417939274}
-  angle: 90
-  axis: {x: 0, y: 1, z: 0}
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
 --- !u!114 &114625573139749668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9459,16 +9420,11 @@ MonoBehaviour:
     fallbackTypeName: VRTK.SDK_FallbackController
     typeName: VRTK.SDK_DaydreamController
     descriptionIndex: 0
-<<<<<<< HEAD
 --- !u!114 &114783771879953874
-=======
---- !u!114 &114798202503796294
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1002096917128604}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -9490,14 +9446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4bad529a7fb04ec6827e98d4af39523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
-  m_GameObject: {fileID: 1747980913580844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4bad529a7fb04ec6827e98d4af39523, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
   kind: 8
   triggerTag: 
   delayInSeconds: 0
@@ -14808,15 +14756,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568523752829750}
-<<<<<<< HEAD
 --- !u!222 &222091548745005468
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1488031793467066}
-=======
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
 --- !u!222 &222131186077578828
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -14888,7 +14833,6 @@ CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1385420304209772}
 --- !u!222 &222347370730342736
 CanvasRenderer:
@@ -14901,8 +14845,6 @@ CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-=======
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
   m_GameObject: {fileID: 1087564710494096}
 --- !u!222 &222393744144283908
 CanvasRenderer:
@@ -15001,7 +14943,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1810358302447610}
 --- !u!223 &223160051012493530
-<<<<<<< HEAD
 Canvas:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -15022,8 +14963,6 @@ Canvas:
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!223 &223203195075993194
-=======
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
 Canvas:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -15221,7 +15160,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
 --- !u!224 &224144091627995242
 RectTransform:
   m_ObjectHideFlags: 1
@@ -15258,8 +15196,6 @@ RectTransform:
   m_AnchoredPosition: {x: 41, y: -8}
   m_SizeDelta: {x: 82, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
-=======
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
 --- !u!224 &224178994955800730
 RectTransform:
   m_ObjectHideFlags: 1
@@ -15718,7 +15654,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
 --- !u!224 &224800106968078734
 RectTransform:
   m_ObjectHideFlags: 1
@@ -15738,8 +15673,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
-=======
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
 --- !u!224 &224834773139624376
 RectTransform:
   m_ObjectHideFlags: 1
@@ -15795,7 +15728,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
 --- !u!224 &224946943712508964
 RectTransform:
   m_ObjectHideFlags: 1
@@ -15834,8 +15766,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
-=======
->>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
 --- !u!224 &224969247727170030
 RectTransform:
   m_ObjectHideFlags: 1
