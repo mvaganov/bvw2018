@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4003558741692182}
   - component: {fileID: 23673314939276986}
   - component: {fileID: 102318505869672260}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4251880352086992}
   - component: {fileID: 198895219659058854}
   - component: {fileID: 199612017095557262}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: out->in
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 65479463822009736}
   - component: {fileID: 114712041452716448}
   - component: {fileID: 114692268149340756}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
