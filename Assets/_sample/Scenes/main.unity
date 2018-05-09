@@ -42,7 +42,10 @@ RenderSettings:
   m_IndirectSpecularColor: {r: 0.44997096, g: 0.500028, b: 0.57553124, a: 1}
 =======
   m_IndirectSpecularColor: {r: 0.44997108, g: 0.5000283, b: 0.5755318, a: 1}
+<<<<<<< HEAD
 >>>>>>> 3397a4c482939b89dcb21ff06927dc8fb8fe1ba9
+=======
+>>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1308,6 +1311,39 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224387126120977956, guid: ab97afbb8a3537a4298ddbd09f084602,
+<<<<<<< HEAD
+=======
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224387126120977956, guid: ab97afbb8a3537a4298ddbd09f084602,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224387126120977956, guid: ab97afbb8a3537a4298ddbd09f084602,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224387126120977956, guid: ab97afbb8a3537a4298ddbd09f084602,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224387126120977956, guid: ab97afbb8a3537a4298ddbd09f084602,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224387126120977956, guid: ab97afbb8a3537a4298ddbd09f084602,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224371831677277226, guid: ab97afbb8a3537a4298ddbd09f084602,
+>>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
         type: 2}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -1367,6 +1403,7 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
     - target: {fileID: 224540688793600058, guid: ab97afbb8a3537a4298ddbd09f084602,
         type: 2}
@@ -1660,6 +1697,11 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMin.y
 >>>>>>> 3397a4c482939b89dcb21ff06927dc8fb8fe1ba9
+=======
+    - target: {fileID: 224542610854389704, guid: ab97afbb8a3537a4298ddbd09f084602,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+>>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224542610854389704, guid: ab97afbb8a3537a4298ddbd09f084602,

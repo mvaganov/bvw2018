@@ -177,10 +177,14 @@ PlayerSettings:
   VertexChannelCompressionMask:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Bits: 4294901998
 =======
     m_Bits: 238
 >>>>>>> 3397a4c482939b89dcb21ff06927dc8fb8fe1ba9
+=======
+    m_Bits: 238
+>>>>>>> parent of 2701067... Merge branch 'master' of https://gitlab.com/SHPBVW2018/final
   iPhoneSdkVersion: 988
   iOSTargetOSVersionString: 7.0
   tvOSSdkVersion: 0
