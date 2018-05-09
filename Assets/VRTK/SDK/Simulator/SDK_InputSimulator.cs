@@ -127,11 +127,45 @@ namespace VRTK
         /// The FindInScene method is used to find the `VRSimulatorCameraRig` GameObject within the current scene.
         /// </summary>
         /// <returns>Returns the found `VRSimulatorCameraRig` GameObject if it is found. If it is not found then it prints a debug log error.</returns>
+
+        static string ParentHierarchy(Transform t){
+            string s = "";
+            while(t != null) {
+                s += "->"+t.name;
+                t = t.parent;
+            }
+            return s;
+        }
         public static GameObject FindInScene()
         {
             if (cachedCameraRig == null && !destroyed)
             {
-                cachedCameraRig = VRTK_SharedMethods.FindEvenInactiveGameObject<SDK_InputSimulator>();
+                // GameObject oldBadWay = VRTK_SharedMethods.FindEvenInactiveGameObject<SDK_InputSimulator>();
+                // TODO make all of the 'SDK_Base' classes into MonoBehaviours, so they don't have to go looking for their own objects with gross global queries
+                VRTK.VRTK_SDKSetup[] setups = VRTK_SharedMethods.FindEvenInactiveComponents<VRTK.VRTK_SDKSetup>();
+                int simulatorsFound = 0;
+                for(int i = 0; i < setups.Length; ++i) {
+                    if(setups[i].name.ToLower().StartsWith("simulator")) {
+                        simulatorsFound++;
+                        cachedCameraRig = setups[i].actualBoundaries;
+                    }
+                }
+                if(simulatorsFound > 1) {
+                    throw new System.Exception("Why is there more than one simulator in this scene? "+simulatorsFound+" by my count.");
+                }
+                // if(oldBadWay != cachedCameraRig) {
+                //     Debug.LogError("HOLY CRAP WTF? \n"+
+                //     cachedCameraRig+"->"
+                //         //+cachedCameraRig.transform.parent
+                //         // +cachedCameraRig.isStatic+
+                //         +ParentHierarchy(cachedCameraRig.transform)+
+                //     "\n"+
+                //     oldBadWay+"->"
+                //         //+oldBadWay.transform.parent
+                //         // +oldBadWay.isStatic+
+                //         +ParentHierarchy(oldBadWay.transform)+
+                //     "");
+                // }
                 if (!cachedCameraRig)
                 {
                     VRTK_Logger.Error(VRTK_Logger.GetCommonMessage(VRTK_Logger.CommonMessageKeys.REQUIRED_COMPONENT_MISSING_FROM_SCENE, "VRSimulatorCameraRig", "SDK_InputSimulator", ". check that the `VRTK/Prefabs/VRSimulatorCameraRig` prefab been added to the scene."));

@@ -130,18 +130,18 @@
         /// The FindInScene method is used to find the `VRSimulatorCameraRig` GameObject within the current scene.
         /// </summary>
         /// <returns>Returns the found `VRSimulatorCameraRig` GameObject if it is found. If it is not found then it prints a debug log error.</returns>
-        public static GameObject FindInScene() // needs to somehow get called instead of SDK_InputSimulator.FindInScene()
-        {
-            if (cachedCameraRig == null && !destroyed)
-            {
-                cachedCameraRig = VRTK_SharedMethods.FindEvenInactiveGameObject<SDK_InputSimulator>();
-                if (!cachedCameraRig)
-                {
-                    VRTK_Logger.Error(VRTK_Logger.GetCommonMessage(VRTK_Logger.CommonMessageKeys.REQUIRED_COMPONENT_MISSING_FROM_SCENE, "VRSimulatorCameraRig", "SDK_InputSimulator", ". check that the `VRTK/Prefabs/VRSimulatorCameraRig` prefab been added to the scene."));
-                }
-            }
-            return cachedCameraRig;
-        }
+        // public static GameObject FindInScene() // needs to somehow get called instead of SDK_InputSimulator.FindInScene()
+        // {
+        //     if (cachedCameraRig == null && !destroyed)
+        //     {
+        //         cachedCameraRig = VRTK_SharedMethods.FindEvenInactiveGameObject<SDK_InputSimulator>();
+        //         if (!cachedCameraRig)
+        //         {
+        //             VRTK_Logger.Error(VRTK_Logger.GetCommonMessage(VRTK_Logger.CommonMessageKeys.REQUIRED_COMPONENT_MISSING_FROM_SCENE, "VRSimulatorCameraRig", "SDK_InputSimulator", ". check that the `VRTK/Prefabs/VRSimulatorCameraRig` prefab been added to the scene."));
+        //         }
+        //     }
+        //     return cachedCameraRig;
+        // }
 
         private void Awake()
         {

@@ -6,11 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Mr.V/Scenes/combiner.unity
-    guid: c65d03d5c9a16474aa995b2a36f88df5
+    path: Assets/_sample/Scenes/main.unity
+    guid: ee3875b7059db493098f21aab682f126
   - enabled: 1
-    path: Assets/_Mr.V/Scenes/testing.unity
-    guid: 989d729898cb04d93808ea02040e76bf
-  - enabled: 1
-    path: Assets/_Mr.V/Scenes/volcanopalace.unity
-    guid: dfc98834dc3634713a98ecb5712eafd2
+    path: Assets/_Daniel & Garret/Scenes/Mazerunner.unity
+    guid: 1489be402124e4f12a938026f52892a6
+  m_configObjects: {}
