@@ -9,11 +9,8 @@ public class HandController : MonoBehaviour {
 	public Transform mainCamera;
 	CameraControls mainCamControls;
 	private CameraControls.ControlSettings fpsSettings, handSettings;
-
-	public Transform[] whereControllerScriptsGo = new Transform[2];
-	public Transform[] moveControllerRoots = new Transform[2];
-	public VisualizeHandEvents[] handVisuals = new VisualizeHandEvents[2];
-	private bool[] grabButtonHeld, triggerButtonHeld;
+	public Transform[] moveControllers = new Transform[2];
+	private bool[] grabButtonHeld, useButtonHeld;
 	GameObject[] touched;
 	/// <summary>The hand rotation relative to camera, to keep hands oriented consistently when the user turns the camera.</summary>
 	Quaternion[] handRotationRelativeToCamera;
@@ -23,33 +20,32 @@ public class HandController : MonoBehaviour {
 	/// <summary>The index of the currently active move controller.</summary>
 	private int currentMoveControllerIndex = 0;
 
-	public KeyCode gripButton = KeyCode.Mouse1;
-	public KeyCode triggerButton = KeyCode.Mouse0;
-	// public enum ButtonUse { holdButton, toggleButton };
-	// public ButtonUse howToGrab = ButtonUse.toggleButton;
-	// public ButtonUse howToUse = ButtonUse.holdButton;
+	public KeyCode grabButton = KeyCode.Mouse1;
+	public KeyCode useButton = KeyCode.Mouse0;
+	public enum ButtonUse { holdButton, toggleButton };
+	public ButtonUse howToGrab = ButtonUse.toggleButton;
+	public ButtonUse howToUse = ButtonUse.holdButton;
 
-	public int GetMoveControllerIndex() { return currentMoveControllerIndex; }
-	public Transform CurrentMoveController { get { return moveControllerRoots [currentMoveControllerIndex]; } }
+	public Transform CurrentMoveController { get { return moveControllers [currentMoveControllerIndex]; } }
 
 	/// <summary>reference to MoveControls.</summary>
 	private MoveControls body;
 	float targetDistance = 0;
 
 	public float transitionTime = 0.125f;
-	public bool heldCollidersDontCollideWithPlayer = true;
+	public bool heldCollidersAreTriggers = true;
 
 	public enum ControlState { controlHead, transition, controlArm, flyingHand, rotateHand }
 	private ControlState state = ControlState.controlHead;
 	private int transitionedMoveControllerIndex = -1;
 	private ControlState CurrentControlState { get { return state; } set { state = value; RefreshHelpText (); } }
 
-	public KeyCode headControlKey = KeyCode.Escape;
-	public KeyCode handControlKey = KeyCode.LeftAlt;
-	public KeyCode handFlyKey = KeyCode.Return;
-    public KeyCode handRotateKey = KeyCode.LeftControl;
-	public KeyCode switchControllerKey = KeyCode.Tab;
-	public KeyCode toggleInstructionsKey = KeyCode.F1;
+	public KeyCode headControlKeys = KeyCode.Escape;
+	public KeyCode armControlKeys = KeyCode.LeftAlt;
+	public KeyCode handFlyKeys = KeyCode.Return;
+    public KeyCode handRotateKeys = KeyCode.LeftControl;
+	public KeyCode switchControllerKeys = KeyCode.Tab;
+	public KeyCode toggleInstructionsKeys = KeyCode.F1;
 
 	public static int GetKeyUp(KeyCode[]k){for(int i=0;i<k.Length;++i){if(Input.GetKeyUp(k[i])){return i;}}return -1;}
 	public static int GetKeyDown(KeyCode[]k){for(int i=0;i<k.Length;++i){if(Input.GetKeyDown(k[i])){return i;}}return -1;}
@@ -106,48 +102,48 @@ public class HandController : MonoBehaviour {
 		string s = "";
 		switch(CurrentControlState) {
 		case ControlState.controlHead:
-			s = "Toggle Control Hints: <b>"+KeysToString(toggleInstructionsKey)+"</b>\n\n" +
+			s = "Toggle Control Hints: <b>"+KeysToString(toggleInstructionsKeys)+"</b>\n\n" +
 				"Move Player/Playspace: <b>W, A, S, D</b>\n" +
 				"Head Rotation: <b>Mouse Move</b>\n" +
 				"1st/3rd person zoom: <b>Mouse Wheel</b>\n" +
-				"Switch hand: <b>"+KeysToString(switchControllerKey)+"</b>\n" +
-				"Hand Control Mode:<b>"+KeysToString(handControlKey)+"</b>\n" +
-				"Hand Fly Mode:<b>"+KeysToString(handFlyKey)+"</b>\n" +
-				"Hand Rotate Mode:<b>"+KeysToString(handRotateKey)+"</b>\n" +
-				"> Head Control Mode: <b>"+KeysToString(headControlKey)+"</b>";
+				"Switch hand: <b>"+KeysToString(switchControllerKeys)+"</b>\n" +
+				"Hand Control Mode:<b>"+KeysToString(armControlKeys)+"</b>\n" +
+				"Hand Fly Mode:<b>"+KeysToString(handFlyKeys)+"</b>\n" +
+				"Hand Rotate Mode:<b>"+KeysToString(handRotateKeys)+"</b>\n" +
+				"> Head Control Mode: <b>"+KeysToString(headControlKeys)+"</b>";
 			break;
 		case ControlState.controlArm:
-			s = "Toggle Control Hints: <b>"+KeysToString(toggleInstructionsKey)+"</b>\n\n" +
+			s = "Toggle Control Hints: <b>"+KeysToString(toggleInstructionsKeys)+"</b>\n\n" +
 				"Move Player/Playspace: <b>W, A, S, D</b>\n" +
 				"Arm Rotation: <b>Mouse Move</b>\n" +
 				"Push/Pull hand: <b>Mouse Wheel</b>\n" +
-				"Switch hand: <b>"+KeysToString(switchControllerKey)+"</b>\n" +
-				"> Hand Control Mode:<b>"+KeysToString(handControlKey)+"</b>\n" +
-				"Hand Fly Mode:<b>"+KeysToString(handFlyKey)+"</b>\n" +
-				"Hand Rotate Mode:<b>"+KeysToString(handRotateKey)+"</b>\n" +
-				"Head Control Mode: <b>"+KeysToString(headControlKey)+"</b>";
+				"Switch hand: <b>"+KeysToString(switchControllerKeys)+"</b>\n" +
+				"> Hand Control Mode:<b>"+KeysToString(armControlKeys)+"</b>\n" +
+				"Hand Fly Mode:<b>"+KeysToString(handFlyKeys)+"</b>\n" +
+				"Hand Rotate Mode:<b>"+KeysToString(handRotateKeys)+"</b>\n" +
+				"Head Control Mode: <b>"+KeysToString(headControlKeys)+"</b>";
 			break;
 		case ControlState.flyingHand:
-			s = "Toggle Control Hints: <b>"+KeysToString(toggleInstructionsKey)+"</b>\n\n" +
+			s = "Toggle Control Hints: <b>"+KeysToString(toggleInstructionsKeys)+"</b>\n\n" +
 				"Move Hand: <b>W</b>, <b>A</b>, <b>S</b>, <b>D</b>, <b>Q</b>, <b>E</b>\n" +
 				"Rotate Hand: <b>Mouse Move</b>\n" +
 				"Roll hand: <b>Mouse Wheel</b>\n" +
-				"Switch hand: <b>"+KeysToString(switchControllerKey)+"</b>\n" +
-				"Hand Control Mode:<b>"+KeysToString(handControlKey)+"</b>\n" +
-				"> Hand Fly Mode:<b>"+KeysToString(handFlyKey)+"</b>\n" +
-				"Hand Rotate Mode:<b>"+KeysToString(handRotateKey)+"</b>\n" +
-				"Head Control Mode: <b>"+KeysToString(headControlKey)+"</b>";
+				"Switch hand: <b>"+KeysToString(switchControllerKeys)+"</b>\n" +
+				"Hand Control Mode:<b>"+KeysToString(armControlKeys)+"</b>\n" +
+				"> Hand Fly Mode:<b>"+KeysToString(handFlyKeys)+"</b>\n" +
+				"Hand Rotate Mode:<b>"+KeysToString(handRotateKeys)+"</b>\n" +
+				"Head Control Mode: <b>"+KeysToString(headControlKeys)+"</b>";
 			break;
 		case ControlState.rotateHand:
-			s = "Toggle Control Hints: <b>"+KeysToString(toggleInstructionsKey)+"</b>\n\n" +
+			s = "Toggle Control Hints: <b>"+KeysToString(toggleInstructionsKeys)+"</b>\n\n" +
 				"Rotate Hand: <b>W, A, S, D, Q, E</b>\n" +
 				"Rotate Camera: <b>Mouse Move</b>\n" +
 				"Push/Pull hand: <b>Mouse Wheel</b>\n" +
-				"Switch hand: <b>"+KeysToString(switchControllerKey)+"</b>\n" +
-				"Hand Control Mode:<b>"+KeysToString(handControlKey)+"</b>\n" +
-				"Hand Fly Mode:<b>"+KeysToString(handFlyKey)+"</b>\n" +
-				"> Hand Rotate Mode:<b>"+KeysToString(handRotateKey)+"</b>\n" +
-				"Head Control Mode: <b>"+KeysToString(headControlKey)+"</b>";
+				"Switch hand: <b>"+KeysToString(switchControllerKeys)+"</b>\n" +
+				"Hand Control Mode:<b>"+KeysToString(armControlKeys)+"</b>\n" +
+				"Hand Fly Mode:<b>"+KeysToString(handFlyKeys)+"</b>\n" +
+				"> Hand Rotate Mode:<b>"+KeysToString(handRotateKeys)+"</b>\n" +
+				"Head Control Mode: <b>"+KeysToString(headControlKeys)+"</b>";
 			break;
 		case ControlState.transition:
 			break;
@@ -196,37 +192,17 @@ public class HandController : MonoBehaviour {
 		if (body == null) {
 			body = GetComponent<MoveControls> ();
 		}
-		if (whereControllerScriptsGo [0] == null) {
+		if (moveControllers [0] == null) {
 			throw new System.Exception ("Hey, you need to set values for moveControllers. Thanks bud.");
 		}
-		int countControllers = whereControllerScriptsGo.Length;
-		grabButtonHeld = new bool[countControllers];
-		triggerButtonHeld = new bool[countControllers];
-		touched = new GameObject[countControllers];
-		handRotationRelativeToCamera = new Quaternion[countControllers];
-		originalPositions = new TransformData[countControllers];
-		for (int i = 0; i < countControllers; ++i) {
-			PopulateController (whereControllerScriptsGo [i].gameObject);
-			originalPositions[i] = new TransformData(moveControllerRoots [i].transform, true);
-		}
-		// make sure the hand visual models are attached to the moving hand transform
-		for(int i = 0; i < handVisuals.Length; ++i) {
-			if(handVisuals[i] != null) {
-				bool isParentedToHand = false;
-				Transform t = handVisuals[i].transform;
-				int iter = 0;
-				while(t != null) {
-					if(t == moveControllerRoots[i].transform) {
-						isParentedToHand = true;
-						break;
-					}
-					if(iter++ > 1000){ Debug.LogError("deep recursion bad"); break; }
-					t = t.parent;
-				}
-				if(!isParentedToHand) {
-					handVisuals[i].transform.SetParent(moveControllerRoots[i]);
-				}
-			}
+		grabButtonHeld = new bool[moveControllers.Length];
+		useButtonHeld = new bool[moveControllers.Length];
+		touched = new GameObject[moveControllers.Length];
+		handRotationRelativeToCamera = new Quaternion[moveControllers.Length];
+		originalPositions = new TransformData[moveControllers.Length];
+		for (int i = 0; i < moveControllers.Length; ++i) {
+			PopulateController (moveControllers [i].gameObject);
+			originalPositions[i] = new TransformData(moveControllers [i].transform, true);
 		}
 	}
 
@@ -251,12 +227,6 @@ public class HandController : MonoBehaviour {
 		VRTK.VRTK_InteractGrab grabber = Procure<VRTK.VRTK_InteractGrab> (hand);
 		grabber.controllerAttachPoint = rb;
 		grabber.interactTouch = toucher;
-		grabber.ControllerStartGrabInteractableObject += (sender, args)=>{
-			CollisionSwitch (args.target, true);
-		};
-		grabber.ControllerUngrabInteractableObject += (sender, args)=>{
-			CollisionSwitch (args.target, false);
-		};
 		VRTK.VRTK_InteractUse user = Procure<VRTK.VRTK_InteractUse> (hand);
 		user.interactTouch = toucher;
 		user.interactGrab = grabber;
@@ -279,48 +249,42 @@ public class HandController : MonoBehaviour {
 
 	float mainCameraVSMovingCameraHorizonalOffset;
 
-	GameObject line_test, line_leftHandDelta, line_rightHandDelta; // TODO remove
+	GameObject line_test; // TODO remove
+
 	// Update is called once per frame
-	void Update () {
-		// for some reason, the VRTK develoeprs decided to hard-code the hand and hand-model.
-		// I need to see if that hard-coded hand has moved with the other hand model, and if not, move it along with my model.
-		Vector3 ldelta = whereControllerScriptsGo[1].position - moveControllerRoots[1].position, 
-		rdelta = whereControllerScriptsGo[0].position - moveControllerRoots[0].position;
-		NS.Lines.MakeArrow(ref line_rightHandDelta, moveControllerRoots[0].position, moveControllerRoots[0].position+rdelta, Color.green);
-		NS.Lines.MakeArrow(ref line_leftHandDelta, moveControllerRoots[1].position, moveControllerRoots[1].position+ldelta, Color.red);
+	void Update () { }
+
+	public void LetGoOfEverything() {
+		for (int i = 0; i < moveControllers.Length; ++i) {
+			Transform t = moveControllers [i];
+			if (t != null) {
+				GameObject hand = t.gameObject;
+				VRTK.VRTK_InteractUse user = hand.GetComponent<VRTK.VRTK_InteractUse> ();
+				if (user != null) {
+					user.ForceStopUsing ();
+				}
+				VRTK.VRTK_InteractTouch toucher = hand.GetComponent<VRTK.VRTK_InteractTouch> ();
+				if (toucher != null) {
+					if (touched != null && touched [i] != null) {
+						VRTK.VRTK_InteractableObject iobj = touched [i].GetComponent<VRTK.VRTK_InteractableObject> ();
+						iobj.StopTouching (toucher);
+					}
+					toucher.ForceStopTouching ();
+				}
+			}
+		}
+	}
+	void OnDestroy() {
+		LetGoOfEverything ();
 	}
 
-	// public void LetGoOfEverything() {
-	// 	for (int i = 0; i < moveControllers.Length; ++i) {
-	// 		Transform t = moveControllers [i];
-	// 		if (t != null) {
-	// 			GameObject hand = t.gameObject;
-	// 			VRTK.VRTK_InteractUse user = hand.GetComponent<VRTK.VRTK_InteractUse> ();
-	// 			if (user != null) {
-	// 				user.ForceStopUsing ();
-	// 			}
-	// 			VRTK.VRTK_InteractTouch toucher = hand.GetComponent<VRTK.VRTK_InteractTouch> ();
-	// 			if (toucher != null) {
-	// 				if (touched != null && touched [i] != null) {
-	// 					VRTK.VRTK_InteractableObject iobj = touched [i].GetComponent<VRTK.VRTK_InteractableObject> ();
-	// 					iobj.StopTouching (toucher);
-	// 				}
-	// 				toucher.ForceStopTouching ();
-	// 			}
-	// 		}
-	// 	}
-	// }
-	// void OnDestroy() {
-	// 	LetGoOfEverything ();
-	// }
-
 	void LateUpdate() {
-		bool headControlRequest = GetKeyUp (headControlKey) >= 0;
-		bool handFlyRequest = GetKeyUp(handFlyKey) >= 0;
-		bool armControlRequest = GetKeyUp(handControlKey) >= 0;
-		bool handRotateRequest = GetKeyUp (handRotateKey) >= 0;
-		bool switchControllerRequest = GetKeyUp (switchControllerKey) >= 0;
-		if (GetKeyUp (toggleInstructionsKey) >= 0) {
+		bool headControlRequest = GetKeyUp (headControlKeys) >= 0;
+		bool handFlyRequest = GetKeyUp(handFlyKeys) >= 0;
+		bool armControlRequest = GetKeyUp(armControlKeys) >= 0;
+		bool handRotateRequest = GetKeyUp (handRotateKeys) >= 0;
+		bool switchControllerRequest = GetKeyUp (switchControllerKeys) >= 0;
+		if (GetKeyUp (toggleInstructionsKeys) >= 0) {
 			helpCanvas.enabled = !helpCanvas.enabled;
 		}
 		if (switchControllerRequest) { NextMoveController (); }
@@ -334,7 +298,7 @@ public class HandController : MonoBehaviour {
 		if(CurrentControlState != ControlState.transition) {
 			ReturnControllerToOriginalPosition (currentMoveControllerIndex);
 			currentMoveControllerIndex++;
-			currentMoveControllerIndex %= whereControllerScriptsGo.Length;
+			currentMoveControllerIndex %= moveControllers.Length;
 			switch (CurrentControlState) {
 			case ControlState.controlArm: TransitionToHand (ControlState.controlArm, true);	break;
 			case ControlState.flyingHand: TransitionToHand (ControlState.flyingHand, false); break;
@@ -428,7 +392,6 @@ public class HandController : MonoBehaviour {
 
 	Dictionary<GameObject, int> oldLayer = new Dictionary<GameObject, int>();
 	void CollisionSwitch(GameObject obj, bool isHeldNow) {
-		if(obj == null) { return; }
 		if (isHeldNow) {
 			if (obj.layer != MoveControls.playerControlledLayer) {
 				oldLayer [obj] = obj.layer;
@@ -447,27 +410,72 @@ public class HandController : MonoBehaviour {
 
 	void UpdateGrabUse() {
 		GameObject hand = CurrentMoveController.gameObject;
-		bool wasGrab = grabButtonHeld[currentMoveControllerIndex], wasTrigger = triggerButtonHeld[currentMoveControllerIndex];
-		// switch (howToGrab) {
-		// case ButtonUse.holdButton:
-		grabButtonHeld[currentMoveControllerIndex] = Input.GetKey (gripButton);
-		// break; case ButtonUse.toggleButton: if (Input.GetKeyDown (gripButton)) { grabButtonHeld[currentMoveControllerIndex] = !grabButtonHeld[currentMoveControllerIndex]; }
-		// break;}
-		// switch (howToUse) {
-		// case ButtonUse.holdButton: 
-		triggerButtonHeld[currentMoveControllerIndex] = Input.GetKey (triggerButton);
-		// break; case ButtonUse.toggleButton: if (Input.GetKeyDown (triggerButton))  { triggerButtonHeld[currentMoveControllerIndex] =  !triggerButtonHeld[currentMoveControllerIndex];  } break;}
-		if (wasGrab != grabButtonHeld[currentMoveControllerIndex] || wasTrigger != triggerButtonHeld[currentMoveControllerIndex]) {
-			VisualizeHandEvents v = handVisuals[currentMoveControllerIndex];//hand.GetComponent<VisualizeHandEvents> ();
+		bool wasGrab = grabButtonHeld[currentMoveControllerIndex], wasTrigger = useButtonHeld[currentMoveControllerIndex];
+		switch (howToGrab) {
+		case ButtonUse.holdButton: grabButtonHeld[currentMoveControllerIndex] = Input.GetKey (grabButton); break;
+		case ButtonUse.toggleButton: if (Input.GetKeyDown (grabButton)) { grabButtonHeld[currentMoveControllerIndex] = !grabButtonHeld[currentMoveControllerIndex]; } break;
+		}
+		switch (howToUse) {
+		case ButtonUse.holdButton: useButtonHeld[currentMoveControllerIndex] = Input.GetKey (useButton); break;
+		case ButtonUse.toggleButton: if (Input.GetKeyDown (useButton))  { useButtonHeld[currentMoveControllerIndex] =  !useButtonHeld[currentMoveControllerIndex];  } break;
+		}
+		if (wasGrab != grabButtonHeld[currentMoveControllerIndex] || wasTrigger != useButtonHeld[currentMoveControllerIndex]) {
+			VisualizeHandEvents v = hand.GetComponent<VisualizeHandEvents> ();
             if(v == null) {
                 v = hand.GetComponentInChildren<VisualizeHandEvents>();
-				handVisuals[currentMoveControllerIndex] = v;
             }
 			if (v != null) {
 				if (wasGrab != grabButtonHeld[currentMoveControllerIndex]) { if (grabButtonHeld[currentMoveControllerIndex]) { v.DoGrip (); } else { v.UndoGrip (); } }
-				if (wasTrigger != triggerButtonHeld[currentMoveControllerIndex]) { if (triggerButtonHeld[currentMoveControllerIndex]) { v.DoTrigger (); } else { v.UndoTrigger (); } }
+				if (wasTrigger != useButtonHeld[currentMoveControllerIndex]) { if (useButtonHeld[currentMoveControllerIndex]) { v.DoTrigger (); } else { v.UndoTrigger (); } }
 			}
 		}
+// 		VRTK.VRTK_InteractGrab grabber = hand.GetComponent<VRTK.VRTK_InteractGrab> ();
+// 		if (grabButtonHeld[currentMoveControllerIndex]) {
+// 			if (grabber.GetGrabbedObject () == null) {
+// 				GameObject grabbed = GetInteractableAt(hand.transform.position, .125f);
+// 				if (grabbed != null) {
+// 					touched[currentMoveControllerIndex] = grabbed;
+// 					hand.GetComponent<VRTK.VRTK_InteractTouch> ().ForceTouch (grabbed);
+// 					grabber.AttemptGrab ();
+// 					if (heldCollidersAreTriggers) {
+// 						CollisionSwitch (touched [currentMoveControllerIndex], true);
+// //						string s = "";
+// //						for (int i = 0; i < heldCollidersThatWereChanged.Count; ++i) {
+// //							s += heldCollidersThatWereChanged [i].name + " ";
+// //						}
+// //						Debug.Log ("grabbed"+heldCollidersThatWereChanged.Count+" "+s);
+// 					}
+// 				}
+// 			}
+// 		} else {
+// 			if (grabber.GetGrabbedObject () != null) {
+// 				grabber.ForceRelease (true);
+// 			} else {
+// 				GameObject touchedJustNow = GetInteractableAt(hand.transform.position, .125f);
+// 				VRTK.VRTK_InteractTouch toucher = hand.GetComponent<VRTK.VRTK_InteractTouch> ();
+// 				if (touchedJustNow != touched[currentMoveControllerIndex]) {
+// 					toucher.ForceStopTouching();
+// 					if (touched[currentMoveControllerIndex] != null) {
+// 						if (heldCollidersAreTriggers) {
+// 							CollisionSwitch (touched [currentMoveControllerIndex], false);
+// //							Debug.Log ("released"+heldCollidersThatWereChanged.Count);
+// 						}
+// 						VRTK.VRTK_InteractableObject iobj = touched[currentMoveControllerIndex].GetComponent<VRTK.VRTK_InteractableObject> ();
+// 						iobj.StopTouching (toucher);
+// 					}
+// 				}
+// 				touched[currentMoveControllerIndex] = touchedJustNow;
+// 				if (touchedJustNow != null) {
+// 					toucher.ForceTouch (touchedJustNow);
+// 				}
+// 			}
+// 		}
+// 		VRTK.VRTK_InteractUse user = hand.GetComponent<VRTK.VRTK_InteractUse> ();
+// 		if (useButtonHeld [currentMoveControllerIndex]) {
+// 			user.AttemptUse ();
+// 		} else {
+// 			user.ForceStopUsing ();
+// 		}
 	}
 
 	void TransitionToHand(ControlState goalState, bool enableNormalPlayerControls) {
@@ -522,11 +530,11 @@ public class HandController : MonoBehaviour {
 	}
 
 	void ReturnControllerToOriginalPosition(int controllerID){
-		TransformData.LerpLocal (moveControllerRoots [controllerID], originalPositions [controllerID], transitionTime, null);
+		TransformData.LerpLocal (moveControllers [controllerID], originalPositions [controllerID], transitionTime, null);
 	}
 	void ReturnControllersToOriginalPosition(){
 		// move hands back to their neutral position
-		for (int i = 0; i < moveControllerRoots.Length; ++i) {
+		for (int i = 0; i < moveControllers.Length; ++i) {
 			ReturnControllerToOriginalPosition (i);
 		}
 	}

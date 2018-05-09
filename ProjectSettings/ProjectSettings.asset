@@ -176,9 +176,13 @@ PlayerSettings:
   StripUnusedMeshComponents: 0
   VertexChannelCompressionMask:
     serializedVersion: 2
+<<<<<<< HEAD
     m_Bits: 4294901998
+=======
+    m_Bits: 238
+>>>>>>> 3397a4c482939b89dcb21ff06927dc8fb8fe1ba9
   iPhoneSdkVersion: 988
-  iOSTargetOSVersionString: 8.0
+  iOSTargetOSVersionString: 7.0
   tvOSSdkVersion: 0
   tvOSRequireExtendedGameController: 0
   tvOSTargetOSVersionString: 9.0
