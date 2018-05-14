@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a1344e8fda5e54e1095b16f9c13a4d66
-timeCreated: 1525727619
+timeCreated: 1526311220
 licenseType: Free
 SubstanceImporter:
   externalObjects: {}
@@ -149,12 +149,12 @@ SubstanceImporter:
     - shaderProp: _ParallaxMap
       material: {instanceID: 0}
       baseUID: 2036368169
-    - shaderProp: _MetallicGlossMap
-      material: {instanceID: 0}
-      baseUID: 2098178520
     - shaderProp: _OcclusionMap
       material: {instanceID: 0}
       baseUID: 2017764557
+    - shaderProp: _MetallicGlossMap
+      material: {instanceID: 0}
+      baseUID: 2098178520
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 
