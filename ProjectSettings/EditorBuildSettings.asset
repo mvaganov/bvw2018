@@ -11,3 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Daniel & Garret/Scenes/Mazerunner.unity
     guid: 1489be402124e4f12a938026f52892a6
+  - enabled: 1
+    path: Assets/_Gracie/Scenes/scene1.unity
+    guid: bfec4978d476440cb8119a164e8e017f
+  - enabled: 1
+    path: Assets/_evan/Scenes/basketballScene.unity
+    guid: 5423366a3d9974fba91e30f86a4bb09c
+  - enabled: 1
+    path: Assets/_mojo/Scenes/underwater.unity
+    guid: 27a9c1f761ab646099f08b8e2709fe7d
+  - enabled: 1
+    path: Assets/_Paul/Scenes/TimeManipulationTest.unity
+    guid: de69f7697818f4512a76b9f249656fc5
+  - enabled: 1
+    path: Assets/_Sasha/Scenes/Sasha.unity
+    guid: ce6963301899c4c4499565e466c9af04
