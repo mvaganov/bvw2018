@@ -3,24 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TimeBody : MonoBehaviour {
-
+	
 	public bool isRewinding = false;
-
-	public float recordTime = 10f;
-
+	public float recordTime = 15f;
 	public ParticleSystem RewindParticle;
-
 	List<PointInTime> pointsInTime;
-
 	Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
 		pointsInTime = new List<PointInTime> ();
-		rb = GetComponent<Rigidbody> ();
-		
+		rb = GetComponent <Rigidbody>();
+
 	}
-	
+		
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Return))
@@ -36,16 +32,14 @@ public class TimeBody : MonoBehaviour {
 		else
 			Record ();
 	}
-
 	void Record ()
 	{
 		if (pointsInTime.Count > Mathf.Round (recordTime / Time.fixedDeltaTime)) {
 			pointsInTime.RemoveAt (pointsInTime.Count - 1);
 
 		}
-		pointsInTime.Insert (0, new PointInTime(transform.position, transform.rotation));
+		pointsInTime.Insert (0, new PointInTime (transform.position, transform.rotation));
 	}
-
 	void Rewind ()
 	{
 		if (pointsInTime.Count > 0) {
@@ -57,18 +51,20 @@ public class TimeBody : MonoBehaviour {
 			StopRewind ();
 		}
 	}
-
 	public void StartRewind ()
 	{
 		isRewinding = true;
 		rb.isKinematic = true;
 		RewindParticle.Play ();
-	}
 
+	}
 	public void StopRewind ()
 	{
 		isRewinding = false;
 		rb.isKinematic = false;
 		RewindParticle.Stop ();
+
 	}
 }
+
+//
