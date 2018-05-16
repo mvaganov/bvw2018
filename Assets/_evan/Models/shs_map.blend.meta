@@ -1,0 +1,284 @@
+fileFormatVersion: 2
+guid: 8bbb9cb49c1244e19be887eea6b4fc95
+timeCreated: 1504719742
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cube
+    100002: mark1
+    100004: //RootNode
+    100006: Mesh18_skpB13D1_Component_1_1_Model
+    100008: Mesh20_skp3CA7_1_Component_2_1_Model
+    100010: Mesh2_Chris1_Model
+    100012: Mesh41_skp45AC1_Component_4_1_Model
+    100014: Mesh5_skp8FA9_1_Component1_Model
+    400000: Cube
+    400002: mark1
+    400004: //RootNode
+    400006: Mesh18_skpB13D1_Component_1_1_Model
+    400008: Mesh20_skp3CA7_1_Component_2_1_Model
+    400010: Mesh2_Chris1_Model
+    400012: Mesh41_skp45AC1_Component_4_1_Model
+    400014: Mesh5_skp8FA9_1_Component1_Model
+    2300000: Cube
+    2300002: mark1
+    2300004: Mesh18_skpB13D1_Component_1_1_Model
+    2300006: Mesh20_skp3CA7_1_Component_2_1_Model
+    2300008: Mesh2_Chris1_Model
+    2300010: Mesh41_skp45AC1_Component_4_1_Model
+    2300012: Mesh5_skp8FA9_1_Component1_Model
+    3300000: Cube
+    3300002: mark1
+    3300004: Mesh18_skpB13D1_Component_1_1_Model
+    3300006: Mesh20_skp3CA7_1_Component_2_1_Model
+    3300008: Mesh2_Chris1_Model
+    3300010: Mesh41_skp45AC1_Component_4_1_Model
+    3300012: Mesh5_skp8FA9_1_Component1_Model
+    4300000: Cube
+    4300002: mark1
+    4300004: Mesh41_skp45AC1_Component_4_1_Model
+    4300006: Mesh18_skpB13D1_Component_1_1_Model
+    4300008: Mesh5_skp8FA9_1_Component1_Model
+    4300010: Mesh20_skp3CA7_1_Component_2_1_Model
+    4300012: Mesh2_Chris1_Model
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chris_Hair
+    second: {fileID: 2100000, guid: cfb9bfdb91a2c4a5c8d8e7701e55df00, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chris_Pants
+    second: {fileID: 2100000, guid: edd3f56c474cd4011b415e151a233f8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chris_Shirt
+    second: {fileID: 2100000, guid: edbd1d26e24c94b8690c2f1bc4cdbc68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chris_Shoe
+    second: {fileID: 2100000, guid: 4219aa8da306242e49afb14bd7111b7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chris_Shoe_Sole
+    second: {fileID: 2100000, guid: c039f5b16cb1145e9a971d89a2703fea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chris_Skin
+    second: {fileID: 2100000, guid: 33d491f1489eb410bb7ef80c32ac5e0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_001
+    second: {fileID: 2100000, guid: 885ec84a05cb349338fd1b83573a543c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_002
+    second: {fileID: 2100000, guid: a7bab1ba61a864ed5a59788d3d1bbc98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_10___auto_10_jpg
+    second: {fileID: 2100000, guid: 1cd4134a5c3a64d868b40b1b17fa33b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_11___auto_11_jpg
+    second: {fileID: 2100000, guid: e05b8728e97474d46afd58601b8dbb56, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_14___auto_14_jpg
+    second: {fileID: 2100000, guid: 61aaf87c7fd8d4964954052297d35eeb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_15___auto_15_jpg
+    second: {fileID: 2100000, guid: b60624141b84b4a6f97c6b0b20295426, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_16___auto_16_jpg
+    second: {fileID: 2100000, guid: 5237baeb6ca0d47c69dcb55cbc7cd1ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_17___auto_17_jpg
+    second: {fileID: 2100000, guid: 8abf58d6fc5e9429fa2cb187329c8ecb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_1___auto_1_jpg
+    second: {fileID: 2100000, guid: 19bb6662c19314b2a9fb386a71488be4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_2___auto_2_jpg
+    second: {fileID: 2100000, guid: a7f2ada79ca454d63aebb4d31bd4465c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_3___auto_3_jpg
+    second: {fileID: 2100000, guid: 7cf0dd6c7aa274f66acbb13a96c81b90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_4___auto_4_jpg
+    second: {fileID: 2100000, guid: 00a896527ff7b429d84d80fcd50f6a96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_5___auto_5_jpg
+    second: {fileID: 2100000, guid: 7a1d814adc3644dcb8dbb4de21179709, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_6___auto_6_jpg
+    second: {fileID: 2100000, guid: c6f59836499c64f38b66f9245b42b735, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_7___auto_7_jpg
+    second: {fileID: 2100000, guid: 97b1276f295044ac3bbfdd4f3c4ed45e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_8___auto_8_jpg
+    second: {fileID: 2100000, guid: 412f77ccd8c6146578eab498bb93122c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto_9___auto_9_jpg
+    second: {fileID: 2100000, guid: 9739d688cbfda48698734aa9c15f081d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _auto____auto__jpg
+    second: {fileID: 2100000, guid: 42e9bcff0d98f4a7b9172a695fdffe3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: asphalt
+    second: {fileID: 2100000, guid: 3857df3b7d90e4a0f99b793505924bb0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: concrete
+    second: {fileID: 2100000, guid: 09afcb216e521436bae1d7c73da71a8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: default
+    second: {fileID: 2100000, guid: 6b2fae774b6f7429a878717ddddb1971, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dirt
+    second: {fileID: 2100000, guid: c59f986416c194022aabfb882f700323, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greens
+    second: {fileID: 2100000, guid: df9b71561bfc641f1963fcb12e92e6f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hotpink
+    second: {fileID: 2100000, guid: 3d8485e2244e94329a030bd7c69f39d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof
+    second: {fileID: 2100000, guid: be39db41e2fcf46729f57ef46975a63f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tennis_court
+    second: {fileID: 2100000, guid: 07cc0688e3e5a49658491e7a14b60194, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
