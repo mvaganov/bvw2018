@@ -165,8 +165,7 @@ Prefab:
       propertyPath: nextScene
       value: basketballScene
       objectReference: {fileID: 0}
-    - target: {fileID: 102318505869672260, guid: 466452651d56945aba014c70567e2a26,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Text
       value: 'basketball
 
@@ -175,6 +174,55 @@ Prefab:
     - target: {fileID: 1906711000948944, guid: 466452651d56945aba014c70567e2a26, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224492045523622768, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 33614609759789972, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_text
+      value: 'basketball
+
+        <size=50%><#888888>Evan Nichols
+
+        (Creative Inquiry)</color></size>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 466452651d56945aba014c70567e2a26, type: 2}
@@ -236,8 +284,7 @@ Prefab:
       propertyPath: nextScene
       value: _mojo/Scenes/scene1
       objectReference: {fileID: 0}
-    - target: {fileID: 102318505869672260, guid: 466452651d56945aba014c70567e2a26,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Text
       value: atlantis
       objectReference: {fileID: 0}
@@ -263,6 +310,52 @@ Prefab:
     - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 33614609759789972, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_text
+      value: 'atlantis
+
+        <size=50%><#888888>Maddy Johnson
+
+        Alexa Bartlett
+
+        (CS2)</color></size>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 466452651d56945aba014c70567e2a26, type: 2}
@@ -697,8 +790,7 @@ Prefab:
       propertyPath: nextScene
       value: AngeloCave
       objectReference: {fileID: 0}
-    - target: {fileID: 102318505869672260, guid: 466452651d56945aba014c70567e2a26,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Text
       value: cave
       objectReference: {fileID: 0}
@@ -713,6 +805,54 @@ Prefab:
     - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 33614609759789972, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_text
+      value: 'cave
+
+        <size=50%><#888888>Gracie Battles
+
+        Angelo Tonas
+
+        Chloe Spreng
+
+        (CS2)</color></size>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 466452651d56945aba014c70567e2a26, type: 2}
@@ -754,7 +894,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4780424354060430, guid: 02d6066b36c10984483145e4516e4384, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4780424354060430, guid: 02d6066b36c10984483145e4516e4384, type: 2}
       propertyPath: m_LocalScale.y
@@ -936,12 +1076,64 @@ Prefab:
       propertyPath: nextScene
       value: TimeManipulationTest
       objectReference: {fileID: 0}
-    - target: {fileID: 102318505869672260, guid: 466452651d56945aba014c70567e2a26,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Text
       value: 'time
 
         test'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224492045523622768, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 33614609759789972, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_text
+      value: 'time
+
+        manipulation
+
+        test
+
+        <size=50%><#888888>Paul Komin
+
+        (CS2)</color></size>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 466452651d56945aba014c70567e2a26, type: 2}
@@ -979,7 +1171,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 657443380}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -116.63701}
 --- !u!199 &717252735
 ParticleSystemRenderer:
@@ -1095,7 +1287,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2073439492
+  randomSeed: 954196323
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4479,14 +4671,61 @@ Prefab:
       propertyPath: nextScene
       value: Sasha
       objectReference: {fileID: 0}
-    - target: {fileID: 102318505869672260, guid: 466452651d56945aba014c70567e2a26,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Text
       value: wands
       objectReference: {fileID: 0}
     - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33614609759789972, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_text
+      value: 'wand
+
+        test
+
+        <size=50%><#888888>Sasha Bellack
+
+        Jai Deshpande
+
+        (CS2)</color></size>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 466452651d56945aba014c70567e2a26, type: 2}
@@ -5724,6 +5963,63 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab97afbb8a3537a4298ddbd09f084602, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1358559106
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1442232949}
+    m_Modifications:
+    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33614609759789972, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 466452651d56945aba014c70567e2a26, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1442232948
 GameObject:
   m_ObjectHideFlags: 0
@@ -5847,7 +6143,7 @@ MeshFilter:
 Transform:
   m_PrefabParentObject: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26,
     type: 2}
-  m_PrefabInternal: {fileID: 2059393878}
+  m_PrefabInternal: {fileID: 1358559106}
 --- !u!4 &1572953133 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4152100114561830, guid: ce011283618364fab87c9f252df09d83,
@@ -6442,12 +6738,59 @@ Prefab:
       propertyPath: nextScene
       value: Mazerunner
       objectReference: {fileID: 0}
-    - target: {fileID: 102318505869672260, guid: 466452651d56945aba014c70567e2a26,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Text
       value: 'maze
 
         runner'
+      objectReference: {fileID: 0}
+    - target: {fileID: 33614609759789972, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_text
+      value: 'maze
+
+        runner
+
+        <size=50%><#888888>Daniel Carlson
+
+        Garret Pinkston
+
+        (CS2)</color></size>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591584542290398, guid: 466452651d56945aba014c70567e2a26,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 466452651d56945aba014c70567e2a26, type: 2}
@@ -6457,48 +6800,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26,
     type: 2}
   m_PrefabInternal: {fileID: 398639100}
---- !u!1001 &2059393878
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1442232949}
-    m_Modifications:
-    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 466452651d56945aba014c70567e2a26, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &2111529105
 GameObject:
   m_ObjectHideFlags: 0
