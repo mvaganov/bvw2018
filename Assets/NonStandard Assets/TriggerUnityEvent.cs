@@ -7,7 +7,7 @@ namespace NS {
 		public float delayInSeconds = 0;
 		public UnityEngine.Events.UnityEvent whatToTrigger;
 
-		void Start () { AddTriggers (gameObject, whatToTrigger, kind, triggerTag, true, delayInSeconds); }
+		void Start () { AddTriggers (gameObject, whatToTrigger, kind, triggerTag, KeyCode.None, true, delayInSeconds); }
 		public void DoActivateTrigger () {
 			DoActivateTrigger (gameObject, whatToTrigger, gameObject, true, delayInSeconds);
 		}

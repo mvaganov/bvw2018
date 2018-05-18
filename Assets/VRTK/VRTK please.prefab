@@ -177,6 +177,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4119637883025844}
+  - component: {fileID: 114865210485292300}
   m_Layer: 0
   m_Name: VRTK please
   m_TagString: Untagged
@@ -7032,6 +7033,31 @@ MonoBehaviour:
   enableAdaptiveResolution: 0
   minRenderScale: 0.7
   maxRenderScale: 1
+  expandMixedRealityCapturePropertySheet: 0
+  enableMixedReality: 0
+  compositionMethod: 0
+  extraHiddenLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  capturingCameraDevice: 0
+  flipCameraFrameHorizontally: 0
+  flipCameraFrameVertically: 0
+  handPoseStateLatency: 0
+  sandwichCompositionRenderLatency: 0
+  sandwichCompositionBufferedFrames: 8
+  chromaKeyColor: {r: 0, g: 1, b: 0, a: 1}
+  chromaKeySimilarity: 0.6
+  chromaKeySmoothRange: 0.03
+  chromaKeySpillRange: 0.06
+  useDynamicLighting: 0
+  depthQuality: 1
+  dynamicLightingSmoothFactor: 8
+  dynamicLightingDepthVariationClampingValue: 0.001
+  virtualGreenScreenType: 0
+  virtualGreenScreenTopY: 10
+  virtualGreenScreenBottomY: -10
+  virtualGreenScreenApplyDepthCulling: 0
+  virtualGreenScreenDepthTolerance: 0.2
   _trackingOriginType: 1
   usePositionTracking: 1
   useRotationTracking: 1
@@ -9372,6 +9398,23 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114865210485292300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099519026938784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bad529a7fb04ec6827e98d4af39523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kind: 24
+  triggerTag: 
+  keyTrigger: 45
+  delayInSeconds: 0
+  whatToTrigger: {fileID: 102900000, guid: ee3875b7059db493098f21aab682f126, type: 3}
+  activate: 1
 --- !u!114 &114877778323759122
 MonoBehaviour:
   m_ObjectHideFlags: 1

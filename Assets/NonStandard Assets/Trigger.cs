@@ -21,7 +21,7 @@ namespace NS {
 		[Tooltip("If false, *deactivate* whatToTrigger instead")]
 		public bool activate = true;
 
-		void Start () { AddTriggers (gameObject, whatToTrigger, kind, triggerTag, activate, delayInSeconds); }
+		void Start () { AddTriggers (gameObject, whatToTrigger, kind, triggerTag, keyTrigger, activate, delayInSeconds); }
 
 		public void DoActivateTrigger (){ DoActivateTrigger (gameObject, whatToTrigger, gameObject, activate, delayInSeconds); }
 	}
@@ -37,12 +37,15 @@ namespace NS {
 			onMouseEnter, onMouseOver, onMouseExit,
 			onMouseDown, onMouseDrag, onMouseUp, onMouseUpAsButton,
 			onBecameInvisible, onBecameVisible,
+			onKeyDown, onKeyUp, onKey
 			// TODO add: onVREnter (can be hands or head), onVRExit, onVRPress (can be any hand control button), onVRRelease, onVRPointStart, onVRPointStop, onVRSwipe
 		}
 		[Tooltip("What triggers the object above")]
 		public TKind kind = TKind.onTriggerEnter;
 		[Tooltip("For colliders, if not empty, only trigger if the triggering collider is tagged with this value")]
 		public string triggerTag;
+		[Tooltip("For key triggers")]
+		public KeyCode keyTrigger;
 
 		public static void DoActivateTrigger(object triggeringObject, object whatToTrigger, GameObject triggeredGameObject, bool activate, float delayInSeconds) {
 			if (delayInSeconds <= 0) {
@@ -188,7 +191,7 @@ namespace NS {
 			Collider2D c2 = g.GetComponent<Collider2D> (); if (c2) { c2.isTrigger = true; }
 		}
 
-		public static void AddTriggers(GameObject g, object w, TKind kind, string triggerTag, bool a, float s) {
+		public static void AddTriggers(GameObject g, object w, TKind kind, string triggerTag, KeyCode keyTrigger, bool a, float s) {
 			bool is2D = false;
 			switch(kind){
 			case TKind.onTriggerEnter: case TKind.onTriggerExit: case TKind.onTriggerStay:
@@ -225,6 +228,9 @@ namespace NS {
 			case TKind.onMouseUpAsButton:	AddTrigger<OnMouseUpAsButton_> (g,w,a,s); break;
 			case TKind.onBecameInvisible:	AddTrigger<OnBecameInvisible_> (g,w,a,s); break;
 			case TKind.onBecameVisible:		AddTrigger<OnBecameVisible_> (g,w,a,s); break;
+			case TKind.onKeyDown:			AddKeyTrigger<OnKeyDown_> (g,w,keyTrigger,a,s); break;
+			case TKind.onKeyUp:				AddKeyTrigger<OnKeyUp_>   (g,w,keyTrigger,a,s); break;
+			case TKind.onKey:				AddKeyTrigger<OnKey_>     (g,w,keyTrigger,a,s); break;
 			}
 		}
 
@@ -237,6 +243,11 @@ namespace NS {
 			}
 			public void DoTriggerMouse() { Trigger.DoActivateTrigger (Input.mousePosition, whatToTrigger, gameObject, activate); }
 		}
+		public class _TriggerKey : _TriggerBase { 
+			public KeyCode key;
+			public void DoTriggerKey() { Trigger.DoActivateTrigger (Input.mousePosition, whatToTrigger, gameObject, activate); }
+		}
+
 		private static void AddTrigger<T>(GameObject gameObject, object whatToTrigger, bool activate, float s) where T : _TriggerBase {
 			T t = gameObject.AddComponent<T> ();
 			t.whatToTrigger = whatToTrigger;
@@ -257,6 +268,9 @@ namespace NS {
 		public class OnMouseDrag_ : _TriggerBase { void OnMouseDrag() { DoTriggerMouse (); }}
 		public class OnMouseUp_ : _TriggerBase { void OnMouseUp() { DoTriggerMouse (); }}
 		public class OnMouseUpAsButton_ : _TriggerBase { void OnMouseMouseUpAsButton() { DoTriggerMouse (); }}
+		public class OnKeyDown_ : _TriggerKey { void FixedUpdate() { if(Input.GetKeyDown(key)){ DoTriggerKey (); }}}
+		public class OnKeyUp_ : _TriggerKey { void FixedUpdate() { if(Input.GetKeyUp(key)){ DoTriggerKey (); }}}
+		public class OnKey_ : _TriggerKey { void FixedUpdate() { if(Input.GetKey(key)){ DoTriggerKey (); }}}
 
 		public delegate void BooleanAction(bool b);
 		public static void EquateUnityEditorPauseWithApplicationPause(BooleanAction b) {
@@ -288,6 +302,13 @@ namespace NS {
 			T t = gameObject.AddComponent<T> ();
 			t.whatToTrigger = whatToTrigger;
 			t.triggerTag = triggerTag;
+			t.activate = activate;
+			t.delayInSeconds = s;
+		}
+		private static void AddKeyTrigger<T>(GameObject gameObject, object whatToTrigger, KeyCode keyTrigger, bool activate, float s) where T : _TriggerKey {
+			T t = gameObject.AddComponent<T> ();
+			t.whatToTrigger = whatToTrigger;
+			t.key = keyTrigger;
 			t.activate = activate;
 			t.delayInSeconds = s;
 		}
