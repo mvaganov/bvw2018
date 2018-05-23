@@ -26,3 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Sasha/Scenes/Sasha.unity
     guid: ce6963301899c4c4499565e466c9af04
+  - enabled: 1
+    path: Assets/_ingy/Scenes/ingy.unity
+    guid: c701bd580d6ef4697aa6aa7e2e7cd2ee
