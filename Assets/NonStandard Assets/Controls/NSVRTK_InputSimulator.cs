@@ -120,7 +120,7 @@
         // private SDK_ControllerSim rightController;
         // private SDK_ControllerSim leftController;
         private static GameObject cachedCameraRig;
-        private static bool destroyed = false;
+        // private static bool destroyed = false;
         // private float sprintMultiplier = 1;
         // private GameObject crossHairPanel;
 
@@ -168,7 +168,7 @@
             SDK_ControllerSim leftController = leftHand.GetComponent<SDK_ControllerSim>();
             rightController.Selected = true;
             leftController.Selected = false;
-            destroyed = false;
+            // destroyed = false;
 
             var controllerSDK = VRTK_SDK_Bridge.GetControllerSDK() as SDK_SimController;
             if (controllerSDK != null)
@@ -194,7 +194,7 @@
         private void OnDestroy()
         {
             VRTK_SDKManager.instance.RemoveBehaviourToToggleOnLoadedSetupChange(this);
-            destroyed = true;
+            // destroyed = true;
         }
 
         private int lastKnownMoveControllerIndex = -1;

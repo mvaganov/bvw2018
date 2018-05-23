@@ -12,11 +12,11 @@ public class NewScenePortal : MonoBehaviour {
 
 	public void GoToNextScene() {
 		if(nextScene != null && nextScene.Length > 0) {
-			SceneManager.UnloadScene(SceneManager.GetActiveScene().name);
-			SceneManager.LoadScene(nextScene);
+			SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+			SceneManager.LoadSceneAsync(nextScene);
 		} else {
-			SceneManager.UnloadScene(SceneManager.GetActiveScene().name);
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+			SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
 		}
 	}
 

@@ -63,8 +63,10 @@ public class MassExportSubstance : EditorWindow
 				string substancePath = AssetDatabase.GetAssetPath(substance.GetInstanceID());
 				SubstanceImporter substanceImporter = AssetImporter.GetAtPath(substancePath) as SubstanceImporter;
 				int substanceMaterialCount = substanceImporter.GetMaterialCount();
+				#pragma warning disable 0618
+				// this script explicitly exists for migrating substance materials
 				ProceduralMaterial[] substanceMaterials = substanceImporter.GetMaterials();
-
+				#pragma warning restore 0618
 				if (substanceMaterialCount <= 0)
 				{
 					continue;
@@ -87,7 +89,10 @@ public class MassExportSubstance : EditorWindow
 				System.Type substanceImporterType = typeof(SubstanceImporter);
 				MethodInfo exportBitmaps = substanceImporterType.GetMethod("ExportBitmaps", BindingFlags.Instance | BindingFlags.Public);
 
+				#pragma warning disable 0618
+				// this script explicitly exists for migrating substance materials
 				foreach (ProceduralMaterial substanceMaterial in substanceMaterials)
+				#pragma warning restore 0618
 				{
 					bool generateAllOutputs = substanceImporter.GetGenerateAllOutputs(substanceMaterial);
 
@@ -133,7 +138,10 @@ public class MassExportSubstance : EditorWindow
 						continue;
 					}
 
+					#pragma warning disable 0618
+					// this script explicitly exists for migrating substance materials
 					foreach (ProceduralTexture materialTexture in materialTextures)
+					#pragma warning restore 0618
 					{
 						string newTexturePath = materialPath + materialTexture.name + ".tga";
 
@@ -162,7 +170,10 @@ public class MassExportSubstance : EditorWindow
 							}
 						}
 
+						#pragma warning disable 0618
+						// this script explicitly exists for migrating substance materials
 						if (materialTexture.GetProceduralOutputType() == ProceduralOutputType.Normal)
+						#pragma warning restore 0618
 						{
 							TextureImporter textureImporter = AssetImporter.GetAtPath(newTexturePath) as TextureImporter;
 

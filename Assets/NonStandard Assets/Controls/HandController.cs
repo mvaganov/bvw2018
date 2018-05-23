@@ -14,7 +14,8 @@ public class HandController : MonoBehaviour {
 	public Transform[] moveControllerRoots = new Transform[2];
 	public VisualizeHandEvents[] handVisuals = new VisualizeHandEvents[2];
 	private bool[] grabButtonHeld, triggerButtonHeld;
-	GameObject[] touched;
+	// GameObject[] touched;
+
 	/// <summary>The hand rotation relative to camera, to keep hands oriented consistently when the user turns the camera.</summary>
 	Quaternion[] handRotationRelativeToCamera;
 	/// <summary>The original positions of the user's hands, which are returned to after the user stops moving them. TODO make the auto-return an option</summary>
@@ -202,7 +203,7 @@ public class HandController : MonoBehaviour {
 		int countControllers = whereControllerScriptsGo.Length;
 		grabButtonHeld = new bool[countControllers];
 		triggerButtonHeld = new bool[countControllers];
-		touched = new GameObject[countControllers];
+		// touched = new GameObject[countControllers];
 		handRotationRelativeToCamera = new Quaternion[countControllers];
 		originalPositions = new TransformData[countControllers];
 		for (int i = 0; i < countControllers; ++i) {
@@ -510,7 +511,7 @@ public class HandController : MonoBehaviour {
 			// remember the delta between the hand rotation and the camera's forward rotation
 			Transform handRotationOffsetTransform = MoveControllerTransform ();
 			handRotationOffsetTransform.rotation = targetCamRotation;
-			prevAngleOfMouse = float.PositiveInfinity;
+			// prevAngleOfMouse = float.PositiveInfinity;
 			handRotationRelativeToCamera[currentMoveControllerIndex] = Quaternion.Inverse(targetCamRotation) * hand.rotation;
 			if(enableNormalPlayerControls){
 				EnableNormalPlayerControls(true);
@@ -563,6 +564,6 @@ public class HandController : MonoBehaviour {
 		Transform t = CurrentMoveController.Find (moveControllerName);
 		return t;
 	}
-	private float prevAngleOfMouse = float.PositiveInfinity;
+	// private float prevAngleOfMouse = float.PositiveInfinity;
 	private static string moveControllerName = "<camera offset>";
 }

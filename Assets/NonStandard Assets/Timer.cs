@@ -128,7 +128,7 @@ namespace NS {
 		void OnEnable() { OnApplicationPause (false); }
 
 		protected void Init() {
-			NS.Trigger.EquateUnityEditorPauseWithApplicationPause (OnApplicationPause);
+			NS.F.EquateUnityEditorPauseWithApplicationPause (OnApplicationPause);
 		}
 
 		void Start () {
@@ -152,7 +152,7 @@ namespace NS {
 			while (queue.Count > 0 && queue [0].when <= now) {
 				ToDo todo = queue [0];
 				queue.RemoveAt (0);
-				NS.Trigger.DoActivateTrigger(gameObject, todo.what, gameObject, todo.activate);
+				NS.F.DoActivate(gameObject, todo.what, gameObject, todo.activate);
 			}
 		}
 	}

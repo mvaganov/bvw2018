@@ -75,10 +75,10 @@ public class ThrowBasketballScript : MonoBehaviour {
 
 		if (isThrowing) {
 			initialSpeed += 1f;
-			Vector3 dir = (transform.up + transform.forward).normalized;
-			Vector3 s = transform.position + transform.up;
-			Vector3 e = s + dir * 4;
-			float size = 0.0675f * initialSpeed;
+			// Vector3 dir = (transform.up + transform.forward).normalized;
+			// Vector3 s = transform.position + transform.up;
+			// Vector3 e = s + dir * 4;
+			// float size = 0.0675f * initialSpeed;
 			//Lines.MakeArrow (ref powerLine, s, e, 2, Color.red, size, size);
 			//powerLine.SetActive (true);
 

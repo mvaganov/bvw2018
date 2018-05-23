@@ -9,8 +9,8 @@ public class Door_Open : MonoBehaviour {
 	public GameObject doors;
 	float moved = 0;
 	public float speed;
-	float leftCurrent;
-	float rightCurrent;
+	// float leftCurrent;
+	// float rightCurrent;
 	bool triggered = false;
 
 	// Use this for initialization
@@ -25,11 +25,11 @@ public class Door_Open : MonoBehaviour {
 		}
 		if (moved < 5 && triggered == true) {
 			doors.SetActive (true);
-			leftCurrent = leftDoor.transform.position.x;
+			// leftCurrent = leftDoor.transform.position.x;
 			//Debug.Log (leftCurrent + speed);
 			leftDoor.transform.Translate(-speed,0,0);
 
-			rightCurrent = rightDoor.transform.position.x;
+			// rightCurrent = rightDoor.transform.position.x;
 			rightDoor.transform.Translate(speed,0,0);
 
 			moved += speed;

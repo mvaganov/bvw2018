@@ -14,9 +14,9 @@ public class ParticleSystemActivate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (isRewinding = true)
+		if (isRewinding == true)
 			DoctorStrangeParticle.gameObject.SetActive(true);
-		if (isRewinding = false)
+		if (isRewinding == false)
 			DoctorStrangeParticle.gameObject.SetActive(false);
 	}
 }

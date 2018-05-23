@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Singleton : MonoBehaviour {
-	public string name;
-
 	static Dictionary<string, Singleton> allTheThings = new Dictionary<string, Singleton> ();
 
 	public static Singleton Get(string named){

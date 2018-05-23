@@ -6,18 +6,22 @@ public class Force_Pull : MonoBehaviour {
 	public float grabRadius = 1;
 	public float grabForce = .25f;
 	public Color color = Color.cyan;
-	VRTK.VRTK_ControllerEvents cEv;
+	// VRTK.VRTK_ControllerEvents cEv;
 	VRTK.VRTK_InteractGrab grabber;
 	VRTK.VRTK_InteractUse user;
 	// Use this for initialization
 	void Start () {
-		cEv = GetComponent<VRTK.VRTK_ControllerEvents> ();
+		// cEv = GetComponent<VRTK.VRTK_ControllerEvents> ();
 		grabber = GetComponent<VRTK.VRTK_InteractGrab> ();
 		user = GetComponent<VRTK.VRTK_InteractUse> ();
+		emitParams.startSize = 1;
+		emitParams.startLifetime = 1;
+		emitParams.startColor = color;
 	}
 
 	GameObject line_ray, line_target, line_hit;
 	public ParticleSystem telekenisisParticle;
+	private ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams();
 
 	bool hadGravity;
 	Rigidbody rbBeingMovedWithTheForce;
@@ -43,7 +47,10 @@ public class Force_Pull : MonoBehaviour {
 	//			NS.Lines.MakeCircle (ref line_hit, rh.point, rh.normal, Color.black, grabRadius);
 	//			telekenisisParticle.transform.position = rh.point;
 					if (timer < 0) {
-						telekenisisParticle.Emit (rh.point, -raydir * 1, 1, 1, color);
+						// telekenisisParticle.Emit (rh.point, -raydir * 1, 1, 1, color);
+						emitParams.position = rh.point;
+						emitParams.velocity = -raydir;
+						telekenisisParticle.Emit(emitParams, 1);
 					}
 					rbBeingPointedAt = rh.collider.GetComponent<Rigidbody> ();
 					if (rbBeingPointedAt == null) {
@@ -84,7 +91,10 @@ public class Force_Pull : MonoBehaviour {
 			Vector3 accel = idealV - rbBeingMovedWithTheForce.velocity;
 			rbBeingMovedWithTheForce.velocity += accel.normalized * grabForce * Time.deltaTime;
 			if (timer < 0) {
-				telekenisisParticle.Emit (transform.position, raydir * speed, 1, 1, color);
+				// telekenisisParticle.Emit (transform.position, raydir * speed, 1, 1, color);
+				emitParams.position = transform.position;
+				emitParams.velocity = raydir * speed;
+				telekenisisParticle.Emit(emitParams, 1);
 			}
 		}
 

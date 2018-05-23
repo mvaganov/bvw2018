@@ -7,19 +7,23 @@ public class ForcePull : MonoBehaviour {
 	public float grabForce = 5;
 	public float grabRange = 100;
 	public float emitRate = 16;
-	VRTK.VRTK_ControllerEvents cEv;
+	// VRTK.VRTK_ControllerEvents cEv;
 	VRTK.VRTK_InteractGrab grabber;
 	VRTK.VRTK_InteractUse user;
 	void Start () {
-		cEv = GetComponent<VRTK.VRTK_ControllerEvents> ();
+		// cEv = GetComponent<VRTK.VRTK_ControllerEvents> ();
 		grabber = GetComponent<VRTK.VRTK_InteractGrab> ();
 		if (grabber == null) { grabber = gameObject.AddComponent<VRTK.VRTK_InteractGrab> (); }
 		user = GetComponent<VRTK.VRTK_InteractUse> ();
 		if (user == null) { user = gameObject.AddComponent<VRTK.VRTK_InteractUse> (); }
+		emitParams.startSize = 1;
+		emitParams.startLifetime = 1;
+		emitParams.startColor = telekenisisParticle.main.startColor.color;
 	}
 
 	GameObject line_ray, line_target, line_hit;
 	public ParticleSystem telekenisisParticle;
+	private ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams();
 
 	bool hadGravity;
 	Rigidbody rbBeingMovedWithTheForce;
@@ -81,7 +85,10 @@ public class ForcePull : MonoBehaviour {
 							}
 						}
 						if(telekenisisParticle != null) {
-							telekenisisParticle.Emit (emitFrom, -raydir * 1, 1, 1, telekenisisParticle.main.startColor.color);
+							//telekenisisParticle.Emit (emitFrom, -raydir * 1, 1, 1, telekenisisParticle.main.startColor.color);
+							emitParams.position = rh.point;
+							emitParams.velocity = -raydir;
+							telekenisisParticle.Emit(emitParams, 1);
 						}
 					}
 				}
@@ -119,7 +126,10 @@ public class ForcePull : MonoBehaviour {
 			Vector3 accel = idealV - rbBeingMovedWithTheForce.velocity;
 			rbBeingMovedWithTheForce.velocity += accel.normalized * grabForce * Time.deltaTime;
 			if (timer < 0) {
-				telekenisisParticle.Emit (transform.position, raydir * speed, 1, 1, telekenisisParticle.main.startColor.color);
+				// telekenisisParticle.Emit (transform.position, raydir * speed, 1, 1, telekenisisParticle.main.startColor.color);
+				emitParams.position = transform.position;
+				emitParams.velocity = raydir * speed;
+				telekenisisParticle.Emit(emitParams, 1);
 			}
 		}
 		if (timer < 0) {
