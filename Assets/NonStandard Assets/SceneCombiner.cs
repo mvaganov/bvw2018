@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+// TODO create a non UnityEditor dependent class to handle SceneAssets
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,3 +21,4 @@ namespace NS {
 		}
 	}
 }
+#endif

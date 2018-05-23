@@ -77,9 +77,12 @@ namespace NS {
 				if (toMove != null) {
 					toMove.position = t.position;
 				}
+#if UNITY_EDITOR
+// TODO make a non UnityEditor dependent way to handle scene assets
 			} else if (type == typeof(UnityEditor.SceneAsset)) {
 				UnityEditor.SceneAsset scene = whatToTrigger as UnityEditor.SceneAsset;
 				LoadLevel (scene.name, activate);
+#endif
 			} else if (type == typeof(AudioClip) || type == typeof(AudioSource)) {
 				AudioSource asource = null;
 				if (type == typeof(AudioSource)) {
