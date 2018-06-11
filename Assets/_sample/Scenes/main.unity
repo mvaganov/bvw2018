@@ -5636,6 +5636,56 @@ BoxCollider:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 481b635407ffb1f4c9f82ae6f468e377, type: 3}
   m_PrefabInternal: {fileID: 1014390957}
+--- !u!1 &1020124636 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1099519026938784, guid: ab97afbb8a3537a4298ddbd09f084602,
+    type: 2}
+  m_PrefabInternal: {fileID: 1338416867}
+--- !u!114 &1020124638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1020124636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59f371b6a8dd4dd3b0753a07fbebb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1020124639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1020124636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0fa5bff22be4350baed81993cfe6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pleaseConnectContingency:
+    data: {fileID: 1020124640}
+  sceneName: main
+  settings:
+    additive: 0
+    activateWhenDone:
+      data: {fileID: 0}
+--- !u!114 &1020124640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1020124636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ab021a0e6604805b6a3e171416bc7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyBindings:
+  - key: 8
+    act: 1
+    bound:
+      data: {fileID: 1020124639}
 --- !u!4 &1029630090 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4189949205075718, guid: 466452651d56945aba014c70567e2a26,
@@ -6109,7 +6159,7 @@ Prefab:
     - target: {fileID: 224685872239772504, guid: ab97afbb8a3537a4298ddbd09f084602,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 435
+      value: 487
       objectReference: {fileID: 0}
     - target: {fileID: 224685872239772504, guid: ab97afbb8a3537a4298ddbd09f084602,
         type: 2}
@@ -6126,7 +6176,8 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114865210485292300, guid: ab97afbb8a3537a4298ddbd09f084602, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ab97afbb8a3537a4298ddbd09f084602, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1358559106

@@ -8,8 +8,13 @@ using UnityEditor;
 using _NS.Contingency;
 #endif
 
+namespace _NS.Contingency {
+	public abstract class Contingentable : MonoBehaviour {
+		public abstract bool IsContingencyFor(Object whatToActivate);
+	}
+}
 namespace NS.Contingency {
-	public class ContingentScript : MonoBehaviour {
+	public class ContingentScript : Contingentable {
 		[Tooltip("* Transform: teleport activating object to the Transform\n"+
 			"* SceneAsset: load the scene\n"+
 			"* AudioClip: play audio here\n"+
@@ -18,6 +23,8 @@ namespace NS.Contingency {
 			"* <any other>: activate a \'DoActivateTrigger()\' method (if available)\n"+
 			"* IEnumerable: activate each element in the list")]
 		public EditorGUIObjectReference whatToActivate = new EditorGUIObjectReference();
+
+		public override bool IsContingencyFor (Object whatToActivate) { return this.whatToActivate.data == whatToActivate; }
 
 		[System.Serializable]
 		public struct ActivateOptions {
@@ -51,8 +58,21 @@ namespace _NS.Contingency {
 }
 
 /// Used to more easily reference Components within the Unity editor
-[System.Serializable] public class EditorGUIObjectReference {
+[System.Serializable] public struct EditorGUIObjectReference {
 	public Object data;
+}
+
+namespace NS.Contingency.Response {
+[System.Serializable]
+public class ScriptableString : ScriptableObject {
+	override public string ToString() { return name; }
+	public static ScriptableString Create(string text) {
+		ScriptableString ss = ScriptableObject.CreateInstance<ScriptableString>();
+		ss.name = text;
+		return ss;
+	}
+	public string Text { set { this.name = value; } get { return this.name; } }
+}
 }
 
 #if UNITY_EDITOR
@@ -63,6 +83,7 @@ public class PropertyDrawer_EditorGUIObjectReference : PropertyDrawer {
 	Object selected = null;
 	System.Type[] possibleResponses = null;
 	string[] possibleResponseChoices = null;
+	string[] stringEditChoices = new string[] { "<-- edit string", "null" };
 
 	private void CleanTypename(ref string typename) {
 		int lastDot = typename.LastIndexOf('.');
@@ -73,109 +94,141 @@ public class PropertyDrawer_EditorGUIObjectReference : PropertyDrawer {
 		EditorGUI.BeginProperty(_position, GUIContent.none, _property);
 		SerializedProperty asset = _property.FindPropertyRelative("data");
 		_position = EditorGUI.PrefixLabel(_position, GUIUtility.GetControlID(FocusType.Passive), _label);
-		ContingentScript self = _property.serializedObject.targetObject as ContingentScript;
+		Contingentable self = _property.serializedObject.targetObject as Contingentable;
 		if (asset != null) {
 			float originalWidth = _position.width;
 			_position.width = originalWidth * 0.75f;
-			asset.objectReferenceValue = EditorGUI.ObjectField(_position, asset.objectReferenceValue, typeof(Object), true);
-			_position.x += _position.width;
-			_position.width = originalWidth * 0.25f;
-			if (selected != asset.objectReferenceValue || selected == null) {
-				selected = asset.objectReferenceValue;
-				if (selected != null) {
-					List<string> components = new List<string> ();
-					// if(selected is NS.SceneField) {
-					// 	components.Add(((NS.SceneField)selected).SceneName);
-					// } else {
+			if (asset.objectReferenceValue is ScriptableString) {
+				ScriptableString ss = asset.objectReferenceValue as ScriptableString;
+				ss.Text = EditorGUI.TextField (_position, ss.Text);
+				_position.x += _position.width;
+				_position.width = originalWidth * 0.25f;
+				choice = EditorGUI.Popup(_position, 0, stringEditChoices);
+				if (0 != choice) {
+					if(asset.objectReferenceValue == null && choice > 0) {
+						GameObject go = self.gameObject;//UnityEditor.Selection.activeGameObject;
+						if(go) {
+							Component c = go.AddComponent(possibleResponses[choice-1]);
+							_NS.Contingency.Response.DoActivateBasedOnContingency doEvent = 
+								c as _NS.Contingency.Response.DoActivateBasedOnContingency;
+							if(c != null) {
+								doEvent.RegisterContingency(self);
+								asset.objectReferenceValue = doEvent;
+							}
+						}
+					} else {
+						if (stringEditChoices[choice] == "null") {
+							asset.objectReferenceValue = null;
+							choice = 0;
+						}
+					}
+				}
+			} else {
+				asset.objectReferenceValue = EditorGUI.ObjectField (_position, asset.objectReferenceValue, typeof(Object), true);
+				if (selected != asset.objectReferenceValue || selected == null) {
+					selected = asset.objectReferenceValue;
+					if (selected != null) {
+						List<string> components = new List<string> ();
+						// if(selected is NS.SceneField) {
+						// 	components.Add(((NS.SceneField)selected).SceneName);
+						// } else {
 						string typename = selected.GetType ().ToString ();
-						CleanTypename(ref typename);
+						CleanTypename (ref typename);
 						components.Add (typename);
 						GameObject go = selected as GameObject;
 						if (go != null) {
 							Component[] c = go.GetComponents<Component> ();
 							for (int i = 0; i < c.Length; i++) {
 								typename = c [i].GetType ().ToString ();
-								CleanTypename(ref typename);
+								CleanTypename (ref typename);
 								components.Add (typename);
 							}
-							components.Add("null");
+							components.Add ("null");
 						} else if (selected is Component) {
-							components.Add(".gameObject");
-							components.Add("null");
+							components.Add (".gameObject");
+							components.Add ("null");
 						}
-					// }
-					choices = components.ToArray ();
-					choice = 0;
-				} else {
-					if(possibleResponseChoices == null) {
-						string namespaceName = "NS.Contingency.Response";
-						possibleResponses = PropertyDrawer_ContingencyChoice.GetTypesInNamespace(namespaceName);
-						List<string> list = PropertyDrawer_ContingencyChoice.TypeNamesCleaned(possibleResponses, namespaceName);
-						list.Insert(0, "<-- select Object or create...");
-						possibleResponseChoices = list.ToArray();
-					}
-					choices = possibleResponseChoices;
-				}
-			}
-			// if a scene asset is given...
-			if( asset.objectReferenceValue != null 
-			&& asset.objectReferenceValue.GetType() == typeof(SceneAsset)) {
-				// NS.SceneField sf = (NS.SceneField)ScriptableObject.CreateInstance<NS.SceneField>();
-				// sf.SceneName = (asset.objectReferenceValue as SceneAsset).name;
-				// sf.SceneAsset = asset.objectReferenceValue;
-				// asset.objectReferenceValue = sf;
-				// choices = new string[]{sf.SceneName};
-				// choice = 0;
-				GameObject go = self.gameObject;//UnityEditor.Selection.activeGameObject;
-				if(go) {
-					SceneAsset sa = asset.objectReferenceValue as SceneAsset;
-					DoActivateSceneLoad sceneLoad = go.AddComponent<DoActivateSceneLoad>();
-					sceneLoad.RegisterContingency(self);
-					asset.objectReferenceValue = sceneLoad;
-					Debug.Log(sa+")  ("+sceneLoad);
-					sceneLoad.sceneName = sa.name;
-				}
-			}
-			int lastChoice = choice;
-			choice = EditorGUI.Popup(_position, choice, choices);
-			if (lastChoice != choice) {
-				if(asset.objectReferenceValue == null && choice > 0) {
-					GameObject go = self.gameObject;//UnityEditor.Selection.activeGameObject;
-					if(go) {
-						Component c = go.AddComponent(possibleResponses[choice-1]);
-						_NS.Contingency.Response.DoActivateBasedOnContingency doEvent = 
-						c as _NS.Contingency.Response.DoActivateBasedOnContingency;
-						if(c != null) {
-							doEvent.RegisterContingency(self);
-							asset.objectReferenceValue = doEvent;
-						}
-					}
-				} else {
-					if (choices[choice] == "null") {
-						asset.objectReferenceValue = null;
+						// }
+						choices = components.ToArray ();
 						choice = 0;
-						choices = possibleResponseChoices;
 					} else {
-						int index = choice-1;
-						GameObject go = selected as GameObject;
-						Component[] components = null;
-						if(go != null) {
-							components = go.GetComponents<Component> ();
+						if (possibleResponseChoices == null) {
+							string namespaceName = "NS.Contingency.Response";
+							possibleResponses = PropertyDrawer_ContingencyChoice.GetTypesInNamespace (namespaceName);
+							List<string> list = PropertyDrawer_ContingencyChoice.TypeNamesCleaned (possibleResponses, namespaceName);
+							list.Insert (0, "<-- select Object or create...");
+							possibleResponseChoices = list.ToArray ();
 						}
-						if(components == null && asset.objectReferenceValue is Component && choice == 1) {
-							asset.objectReferenceValue = selected;
-						}
-						if(components != null) {
-							if(index < 0) {
-								Debug.Log("selected game object");
-							} else if(index < components.Length) {
-								asset.objectReferenceValue = components[index];
-							} else if(index >= components.Length) {
-								Debug.Log("selected out of bounds");
+						choices = possibleResponseChoices;
+					}
+				}
+				// if a scene asset is given...
+				if (asset.objectReferenceValue != null
+				  && asset.objectReferenceValue.GetType () == typeof(SceneAsset)) {
+					// NS.SceneField sf = (NS.SceneField)ScriptableObject.CreateInstance<NS.SceneField>();
+					// sf.SceneName = (asset.objectReferenceValue as SceneAsset).name;
+					// sf.SceneAsset = asset.objectReferenceValue;
+					// asset.objectReferenceValue = sf;
+					// choices = new string[]{sf.SceneName};
+					// choice = 0;
+					GameObject go = self.gameObject;//UnityEditor.Selection.activeGameObject;
+					if (go) {
+						SceneAsset sa = asset.objectReferenceValue as SceneAsset;
+						DoActivateSceneLoad sceneLoad = go.AddComponent<DoActivateSceneLoad> ();
+						sceneLoad.RegisterContingency (self);
+						asset.objectReferenceValue = sceneLoad;
+						Debug.Log (sa + ")  (" + sceneLoad);
+						sceneLoad.sceneName = sa.name;
+					}
+				}
+				int lastChoice = choice;
+				_position.x += _position.width;
+				_position.width = originalWidth * 0.25f;
+				choice = EditorGUI.Popup(_position, choice, choices);
+				if (lastChoice != choice) {
+					if(asset.objectReferenceValue == null && choice > 0 && self != null) {
+						GameObject go = self.gameObject;//UnityEditor.Selection.activeGameObject;
+						if(go) {
+							System.Type nextT = possibleResponses [choice - 1];
+							if (nextT.IsSubclassOf (typeof(ScriptableObject))) {
+								asset.objectReferenceValue = ScriptableObject.CreateInstance (nextT);
+							} else {
+								Component c = go.AddComponent (nextT);
+								_NS.Contingency.Response.DoActivateBasedOnContingency doEvent = 
+									c as _NS.Contingency.Response.DoActivateBasedOnContingency;
+								if (c != null) {
+									doEvent.RegisterContingency (self);
+									asset.objectReferenceValue = doEvent;
+								}
 							}
+						}
+					} else {
+						if (choices[choice] == "null") {
+							asset.objectReferenceValue = null;
+							choice = 0;
+							choices = possibleResponseChoices;
 						} else {
-							if(asset.objectReferenceValue != null) {
-								asset.objectReferenceValue = ((Component)asset.objectReferenceValue).gameObject;
+							int index = choice-1;
+							GameObject go = selected as GameObject;
+							Component[] components = null;
+							if(go != null) {
+								components = go.GetComponents<Component> ();
+							}
+							if(components == null && asset.objectReferenceValue is Component && choice == 1) {
+								asset.objectReferenceValue = selected;
+							}
+							if(components != null) {
+								if(index < 0) {
+									Debug.Log("selected game object");
+								} else if(index < components.Length) {
+									asset.objectReferenceValue = components[index];
+								} else if(index >= components.Length) {
+									Debug.Log("selected out of bounds");
+								}
+							} else {
+								if(asset.objectReferenceValue != null) {
+									asset.objectReferenceValue = ((Component)asset.objectReferenceValue).gameObject;
+								}
 							}
 						}
 					}

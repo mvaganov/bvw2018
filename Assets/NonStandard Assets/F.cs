@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// This class serves as a store for static Utility functions until a more suitable class/namespace can be developed
 namespace NS {
-public class F : MonoBehaviour {
+/// This class serves as a store for static Utility functions until a more suitable class/namespace can be developed
+public class F {
 	public static void DoActivate(
 		object whatToActivate,
 		object causedActivate,
@@ -30,7 +30,7 @@ public class F : MonoBehaviour {
 	) {
 		if (whatToActivate == null) { Debug.LogError ("Don't know how to activate null"); return; }
 		if (whatToActivate is EditorGUIObjectReference) {
-			whatToActivate = (whatToActivate as EditorGUIObjectReference).data;
+			whatToActivate = ((EditorGUIObjectReference)whatToActivate).data;
 		}
 		System.Type type = whatToActivate.GetType ();
 		if (typeof(System.Action).IsAssignableFrom (type)) {
@@ -102,7 +102,7 @@ public class F : MonoBehaviour {
 			} else {
 				if (r != null) {
 					go.GetComponent<Renderer> ().material = r.oldMaterial;
-					Destroy (r);
+					GameObject.Destroy (r);
 				}
 			}
 		} else if (typeof(IEnumerable).IsAssignableFrom (type)) {
