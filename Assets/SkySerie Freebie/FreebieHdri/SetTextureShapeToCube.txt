@@ -1,0 +1,1 @@
+For the *4k.hdr files, set their "Texture Shape" to "Cube" to enable to really pretty skyboxes. Not set by default because doing so causes EXTREMELY slow load times for Unity.
